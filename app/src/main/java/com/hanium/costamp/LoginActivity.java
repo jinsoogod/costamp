@@ -103,6 +103,7 @@ public class LoginActivity extends Activity
                 startActivity(intent);
                 break;
             case R.id.btn_NoLoginStart:
+                Toast.makeText(getApplicationContext(),"헿",Toast.LENGTH_LONG).show();
                 break;
 
         }
