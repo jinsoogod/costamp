@@ -19,8 +19,26 @@ android {
     }
 }
 
+repositories{
+    mavenCentral()
+}
+
+
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
+    // 카카오톡 SDK를 사용하기 위해서 필요.
+    compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+
+    // PUSH SDK를 사용하기 위해 필요.
+    compile group: 'com.kakao.sdk', name: 'push', version: project.KAKAO_SDK_VERSION
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+
+    // 페이스북 SDK를 사용하기 위해 필요.
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
 }
+

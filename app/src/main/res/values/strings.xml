@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">costamp</string>
+    <string name="app_name">코스탬프(COSTAMP)</string>
+    <string name="title_activity_main1">Main1Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">1388380511189154</string>
 </resources>
