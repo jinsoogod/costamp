@@ -18,7 +18,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 // 로그인 & 회원 가입 화면
-// 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160712 01:20
+// 최종 수정자 : 표영은, 최종 수정 날짜 : 20160714 16:01
 public class LoginActivity extends Activity
 {
     // 페이스북 로그인을 위한 변수
@@ -102,12 +102,20 @@ public class LoginActivity extends Activity
                 Intent intent = new Intent(getApplicationContext(),LoginEmailActivity.class );
                 startActivity(intent);
                 break;
+            case R.id.btn_login:
+                intent = new Intent(getApplicationContext(),Main1Activity.class );
+                startActivity(intent);
+                break;
             case R.id.btn_NoLoginStart:
-                Toast.makeText(getApplicationContext(),"헿",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"로그인없이 둘러보기",Toast.LENGTH_LONG).show();
+                intent = new Intent(getApplicationContext(),Main1Activity.class );
+                startActivity(intent);
                 break;
 
         }
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)

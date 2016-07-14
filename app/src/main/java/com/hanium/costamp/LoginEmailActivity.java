@@ -68,6 +68,7 @@ public class LoginEmailActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         switch (v.getId()) {
+
             case R.id.submit_button:
                 String str = mEditEmail.getText().toString();
                 String strpw = mEditPassword.getText().toString();
@@ -83,6 +84,9 @@ public class LoginEmailActivity extends AppCompatActivity {
                         if (strpw.equals(strpw2)) {
                             //##########Toast메시지로!! Key값 호츨?##########
                             Toast.makeText(getApplication(), str + " / " + strpw + " / " + strpw2 + " / " + strrd2 + " / " + strItem + " / ", Toast.LENGTH_LONG).show();
+                            //submit_button -> Main1Activity화면으로 back
+                            Intent intent = new Intent(getApplicationContext(), Main1Activity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(getApplication(), "Pw does not match", Toast.LENGTH_LONG).show();
                         }
@@ -93,15 +97,12 @@ public class LoginEmailActivity extends AppCompatActivity {
                     Toast.makeText(getApplication(), "Please enter a valid E-mail", Toast.LENGTH_LONG).show();
                 }
 
-                //submit_button -> Main1Activity화면으로 back
-                Intent intent = new Intent(getApplicationContext(), Main1Activity.class);
-                startActivity(intent);
                 break;
 
 
             // cancel_button -> LoginActivity화면으로 back
             case R.id.cancel_button:
-                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 break;
             case R.id.Relaitve1:
