@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -19,6 +20,9 @@ import com.facebook.login.widget.LoginButton;
 
 // 로그인 & 회원 가입 화면
 // 최종 수정자 : 표영은, 최종 수정 날짜 : 20160714 16:01
+//서버 테스트용 버튼추가
+// 최종 수정자 : 이은영, 최종 수정 날짜 : 20150715 02:20
+
 public class LoginActivity extends Activity
 {
     // 페이스북 로그인을 위한 변수
@@ -62,6 +66,7 @@ public class LoginActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // 상단바 삭제
         FacebookSdk.sdkInitialize(getApplicationContext()); // 페이스북 SDK 초기화
@@ -83,6 +88,19 @@ public class LoginActivity extends Activity
         LoginButton loginButton = (LoginButton)findViewById(R.id.btn_FacebookLogin);
         loginButton.setReadPermissions("public_profile", "user_friends");
         loginButton.registerCallback(callbackManager, callback);
+
+        // 서버테스트용 액티비티 이동버튼
+        Button btn_servertest =(Button) findViewById(R.id.btn_serverTest);
+
+
+        //서버테스트 액티비티 이동용 onCLickListener
+        btn_servertest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ServerClient.class );
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

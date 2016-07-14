@@ -32,7 +32,8 @@
             android:label="@string/title_activity_main1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".picture_transmission_dialog" />
-        <activity android:name=".Test"></activity>
+        <activity android:name=".Test" />
+        <activity android:name=".ServerClient"></activity>
     </application>
 
 </manifest>
