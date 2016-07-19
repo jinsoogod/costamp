@@ -73,9 +73,12 @@ public class ServerClient extends Activity {
             @Override
             public void onClick(View arg0) {
                 //Client 연결부
-                client = new SocketClient(ip_EditText.getText().toString(), port_EditText.getText().toString());
+                //client = new SocketClient(ip_EditText.getText().toString(), port_EditText.getText().toString());
+                client = new SocketClient("192.168.0.14", "5004");
                 threadList.add(client);
                 client.start();
+
+
             }
         });
 
@@ -120,7 +123,8 @@ public class ServerClient extends Activity {
             try {
                 // 연결후 바로 ReceiveThread 시작
                 //서버 공인아이피 : 1.255.57.236  포트 : 5001 (서버에서 확인할것)
-                socket = new Socket("1.255.57.236",5001);
+                //Test용 IP 192..168.0.14 port : 5001
+                socket = new Socket("192.168.0.14",5004);
                 //inputStream = socket.getInputStream();
                 output = new DataOutputStream(socket.getOutputStream());
                 receive = new ReceiveThread(socket);
