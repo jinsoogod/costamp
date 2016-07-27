@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--최종작업일자 20160728 02:03
+최종작업자 : 이은영
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanium.costamp">
+
+    <!-- 추가한곳
+    -->
+    <!-- 화면이 꺼저였을때 gcm 메세지를 받기위해 디바이스를 깨움-->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!--푸시메시지를 받기위한 권한으로 name 앞에 퍼미션 포함되어야함-->
+    <permission android:name="com.hanium.costamp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.hanium.costamp.permission.C2D_MESSAGE"/>
+
+    <!--
+    여기까지
+    -->
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -34,6 +52,57 @@
         <activity android:name=".picture_transmission_dialog" />
         <activity android:name=".Test" />
         <activity android:name=".ServerClient" />
+
+        <!--
+        추가한곳
+        -->
+
+
+        <!-- GCM메세지를 기다리는 리시버, 메세지가 오면 MyGcmListenerService를 실행-->
+        ﻿<receiver
+        android:name="com.google.android.gms.gcm.GcmReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND"
+        >﻿
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            <category android:name="comkoreannickeunyeong.github.gcmtest"/>
+        </intent-filter>
+    </receiver>
+
+
+
+        <!-- GcmReceiver에서 GCM요청을 받았다는 신호(Action)과 함께 메세지(Bundle)을 전달 받음-->
+        ﻿<service
+        android:name="com.hanium.costamp.MyGcmListenerService"
+        android:exported="false"  >
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+        </intent-filter>
+
+    </service>
+
+        <!-- token이 변경되면 refresh 해주는 서비스 -->
+        ﻿<service
+        android:name="com.hanium.costamp.MyInstanceIDListenerService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID"/>
+        </intent-filter>
+    </service>
+
+        <!--Gcm서버에 해당 디바이스를 등록하고 Gcm 전송에 필요한 디바이스만의 고의 token을 획득하는 서비스-->
+        ﻿<service
+        android:name="com.hanium.costamp.RegistrationIntentService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID"/>
+        </intent-filter>
+        ﻿</service>
+        <!--
+        여기까지
+        -->
+
     </application>
 
 </manifest>

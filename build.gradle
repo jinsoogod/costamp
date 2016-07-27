@@ -7,6 +7,12 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
 
+
+        //최종 작업일자 20160728 01:52
+        //최종 작업자 : 이은영
+        //추가한곳 구글 서비스 (gcm)을 사용하기위한 classpath
+        classpath 'com.google.gms:google-services:2.0.0-alpha6'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

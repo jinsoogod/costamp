@@ -1,4 +1,10 @@
+//최종 작업일자 20160728 01:53
+//최종 작업자 : 이은영
+
 apply plugin: 'com.android.application'
+//구글 서비스를 사용하기위해 필요
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileSdkVersion 23
@@ -39,6 +45,8 @@ dependencies {
 
     // 페이스북 SDK를 사용하기 위해 필요.
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //gcm을 사용하기위해필요
+    compile "com.google.android.gms:play-services-gcm:8.3.0"
 
 }
 

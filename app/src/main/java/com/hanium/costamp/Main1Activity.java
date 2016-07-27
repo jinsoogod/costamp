@@ -1,8 +1,11 @@
 package com.hanium.costamp;
 
+//최종작업일자 20160728 02:05
+//최종작업자 : 이은영
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -34,6 +37,10 @@ public class Main1Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
+
+        //GCM서버에 등록하는 REGISTATIONINTENTSERVICE
+        Intent intent = new Intent(this, RegistrationIntentService.class);
+        startService(intent);
 
         Button btn_a = (Button) findViewById(R.id.btnCostamp);
         Button btn_b = (Button) findViewById(R.id.btnCourse);
