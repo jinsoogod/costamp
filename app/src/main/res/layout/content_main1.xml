@@ -50,6 +50,13 @@
                 android:text="사진" />
 
         </LinearLayout>
+        <!--<FrameLayout-->
+            <!--android:id="@+id/maincontainer"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--&gt;-->
+
+        <!--</FrameLayout>-->
 
         <fragment
             android:id="@+id/frg1"

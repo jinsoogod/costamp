@@ -24,17 +24,12 @@ public class Fragment4 extends Fragment {
     GridView mGridview;
     View view;
 
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@//
-    //이미지 사진//
-    Integer[] image10 = {R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-            R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-            R.drawable.testimage2};
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@//
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment4, container, false);
+
+
         mSpinner2 = (Spinner) view.findViewById(R.id.spinner2);
         mSpinner3 = (Spinner) view.findViewById(R.id.spinner3);
         initSpinner2();
@@ -48,8 +43,6 @@ public class Fragment4 extends Fragment {
 
         return view;
     }
-
-
 
 
 
