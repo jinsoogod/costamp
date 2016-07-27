@@ -33,7 +33,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".picture_transmission_dialog" />
         <activity android:name=".Test" />
-        <activity android:name=".ServerClient"></activity>
+        <activity android:name=".ServerClient" />
     </application>
 
 </manifest>

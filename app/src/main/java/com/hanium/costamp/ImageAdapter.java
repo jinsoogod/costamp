@@ -49,7 +49,7 @@ import android.widget.ImageView;
 
             if (convertView == null) {
                 imageView = new ImageView(context);
-                imageView.setLayoutParams(new GridView.LayoutParams(150,150));
+                imageView.setLayoutParams(new GridView.LayoutParams(250,250));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             } else {
                 imageView = (ImageView) convertView;
