@@ -3,7 +3,7 @@ package com.hanium.costamp;
 /**
  * Created by korea on 2016-07-28.
  */
-//최종작업일자 20160728 02:05
+//최종작업일자 20160728 15:21
 //최종작업자 : 이은영
 
 
@@ -32,8 +32,8 @@ public class MyGcmListenerService extends GcmListenerService {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
         //알림 사운드
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        //알림 클릭시 이동할 인텐트
-        Intent intent = new Intent(this, Main1Activity.class);
+        //알림 클릭시 이동할 인텐트 (사진전송 dialog)
+        Intent intent = new Intent(this, picture_transmission_dialog.class);
         //노티피케이션을 생성할때 매개변수는 PendingIntent이므로 Intent를 PendingIntent로 만들어주어야함.
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--최종작업일자 20160728 02:03
+<!--최종작업일자 20160728 15:38
 최종작업자 : 이은영
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -49,7 +49,10 @@
             android:name=".Main1Activity"
             android:label="@string/title_activity_main1"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".picture_transmission_dialog" />
+        <!-- Dialog Theme -->
+        <activity android:name=".picture_transmission_dialog"
+            android:theme="@android:style/Theme.Dialog"
+            />
         <activity android:name=".Test" />
         <activity android:name=".ServerClient" />
 
