@@ -29,7 +29,6 @@ public class Fragment4 extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment4, container, false);
 
-
         mSpinner2 = (Spinner) view.findViewById(R.id.spinner2);
         mSpinner3 = (Spinner) view.findViewById(R.id.spinner3);
         initSpinner2();

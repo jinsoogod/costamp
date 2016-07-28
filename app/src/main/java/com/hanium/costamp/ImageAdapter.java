@@ -14,12 +14,7 @@ import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
     Context context;
-//    int width;
-//
-//    public int getWidth() {
-//        return width;
-//    }
-
+//RelativeLayout rel;
     private Integer[] mThumblds = {R.drawable.testimage1, R.drawable.testimage2,
             R.drawable.testimage1,
             R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
@@ -51,7 +46,8 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
         ImageView imageView;
-//        getWidth();
+
+
         if (convertView == null) {
 
             imageView = new ImageView(context);
