@@ -1,8 +1,11 @@
 package com.hanium.costamp;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -29,7 +32,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // 로그인 & 회원 가입 화면
-// 최종 수정자 : 표영은, 최종 수정 날짜 : 20160714 16:01
+// 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160728 23:01
 //서버 테스트용 버튼추가
 // 최종 수정자 : 이은영, 최종 수정 날짜 : 20150715 02:20
 
@@ -39,7 +42,10 @@ public class LoginActivity extends Activity
     private CallbackManager callbackManager = null;
     private AccessTokenTracker accessTokenTracker = null;
     private LoginButton btn_FBLoginOri; // 진짜 페이스북 로그인 API가 담긴 버튼
-    private Button btn_FBLoginCustom; // 커스터마이징 페이스북 버튼
+    private Button btn_FBLoginCustom; // 커스터마이징 페이스북 로그인 버튼
+
+    // 카카오톡 로그인을 위한 변수
+    private Button btn_KakaoLoginCustom; // 커스터마이징 카카오톡 로그인 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,6 +60,9 @@ public class LoginActivity extends Activity
         // 원본 페이스북 버튼과 커스터마이징한 페이스북 버튼 선언
         btn_FBLoginOri = (LoginButton)findViewById(R.id.btn_FBLoginOri); // 진짜 페이스북 API가 있는 버튼
         btn_FBLoginCustom = (Button)findViewById(R.id.btn_FBLoginCustom); // 커스터마이징한 이미지가 있는 버튼
+
+        // 원본 카카오톡 버튼과 커스터마이징한 카카오톡 버튼 선언
+        btn_KakaoLoginCustom = (Button)findViewById(R.id.btn_KakaoLoginCustom); // 커스터마이징한 이미지가 있는 버튼
 
         // 허가정보?
         List < String > permissionNeeds = Arrays.asList("user_photos", "email", "user_birthday", "public_profile", "AccessToken");
@@ -151,6 +160,9 @@ public class LoginActivity extends Activity
             case R.id.btn_FBLoginCustom:
                 btn_FBLoginOri.performClick();
                 break;
+
+            case R.id.btn_KakaoLoginCustom:
+                break;
         }
     }
 
@@ -159,5 +171,30 @@ public class LoginActivity extends Activity
     {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    // 뒤로 가기 버튼 누를 때 종료
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        switch (keyCode)
+        {
+            case KeyEvent.KEYCODE_BACK:
+                android.app.AlertDialog.Builder QuitBuilder = new android.app.AlertDialog.Builder(this)
+                        .setMessage("코스탬프(COSTAMP)를 종료하시겠습니까?")
+                        .setPositiveButton("예", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                            }
+                        })
+                        .setNegativeButton("아니오", null);
+                android.app.AlertDialog QuitDialog = QuitBuilder.create();
+                QuitDialog.show();
+                break;
+        }
+        return true;
     }
 }
