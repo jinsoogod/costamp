@@ -14,9 +14,19 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 // 로그인 & 회원 가입 화면
 // 최종 수정자 : 표영은, 최종 수정 날짜 : 20160714 16:01
@@ -28,86 +38,99 @@ public class LoginActivity extends Activity
     // 페이스북 로그인을 위한 변수
     private CallbackManager callbackManager = null;
     private AccessTokenTracker accessTokenTracker = null;
-    private LoginButton loginButton = null;
-
-    // 로그인 결과를 가져오는 callback 메소드
-    private FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>()
-    {
-        // 로그인에 성공할 경우
-        @Override
-        public void onSuccess(LoginResult loginResult)
-        {
-            // 로그인을 할 때 사용자별 발급되는 토큰 - 서버로 넘기기 용이하기 위함.
-            AccessToken accessToken = loginResult.getAccessToken();
-            Profile profile = Profile.getCurrentProfile(); // 사용자 프로필 추출
-
-            // 로그인 테스트 메시지 출력
-            Toast.makeText(getApplicationContext(), loginResult.getAccessToken().getUserId(), Toast.LENGTH_SHORT).show();
-
-            // 로그인 완료시 메인 화면으로 이동됨.
-            Intent LoginToMain = new Intent(LoginActivity.this, Main1Activity.class);
-            startActivity(LoginToMain);
-            finish();
-        }
-
-        @Override
-        public void onCancel()
-        {
-            Toast.makeText(getApplicationContext(), "User Sign in Canceled!", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onError(FacebookException error)
-        {
-
-        }
-    };
+    private LoginButton btn_FBLoginOri; // 진짜 페이스북 로그인 API가 담긴 버튼
+    private Button btn_FBLoginCustom; // 커스터마이징 페이스북 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // 상단바 삭제
         FacebookSdk.sdkInitialize(getApplicationContext()); // 페이스북 SDK 초기화
         setContentView(R.layout.login_activity);
 
         callbackManager = CallbackManager.Factory.create(); // 로그인 응답을 처리할 콜백 관리자
-        accessTokenTracker = new AccessTokenTracker()
-        {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken)
-            {
-                // 현재 앱 코드 출력
-                Toast.makeText(getApplicationContext(), currentAccessToken + "", Toast.LENGTH_SHORT).show();
-            }
-        };
-        accessTokenTracker.startTracking();
 
-        // 페이스북 로그인 버튼 제어
-        LoginButton loginButton = (LoginButton)findViewById(R.id.btn_FacebookLogin);
-        loginButton.setReadPermissions("public_profile", "user_friends");
-        loginButton.registerCallback(callbackManager, callback);
+        // 원본 페이스북 버튼과 커스터마이징한 페이스북 버튼 선언
+        btn_FBLoginOri = (LoginButton)findViewById(R.id.btn_FBLoginOri); // 진짜 페이스북 API가 있는 버튼
+        btn_FBLoginCustom = (Button)findViewById(R.id.btn_FBLoginCustom); // 커스터마이징한 이미지가 있는 버튼
+
+        // 허가정보?
+        List < String > permissionNeeds = Arrays.asList("user_photos", "email", "user_birthday", "public_profile", "AccessToken");
+        btn_FBLoginOri.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
+        {
+            // 성공했을때
+            @Override
+            public void onSuccess(LoginResult loginResult)
+            {
+                String accessToken = loginResult.getAccessToken().getToken();
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback()
+                {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response)
+                    {
+                        try
+                        {
+                            String id = object.getString("id");
+
+                            try
+                            {
+                                URL profile_pic = new URL("http://graph.facebook.com/" + id + "/picture?type=large");
+                            }
+
+                            catch (MalformedURLException e)
+                            {
+                                e.printStackTrace();
+                            }
+                            String name = object.getString("name");
+                            String email = object.getString("email");
+                            String gender = object.getString("gender");
+                            String birthday = object.getString("birthday");
+                        }
+
+                        catch (JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,gender, birthday");
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
+
+            @Override
+            public void onCancel()
+            {
+
+            }
+
+            @Override
+            public void onError(FacebookException error)
+            {
+
+            }
+        });
 
         // 서버테스트용 액티비티 이동버튼
-        Button btn_servertest =(Button) findViewById(R.id.btn_serverTest);
+        // Button btn_servertest =(Button) findViewById(R.id.btn_serverTest);
 
 
-        //서버테스트 액티비티 이동용 onCLickListener
+/*        //서버테스트 액티비티 이동용 onCLickListener
         btn_servertest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ServerClient.class );
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
     protected void onStop()
     {
         super.onStop();
-        accessTokenTracker.stopTracking();
     }
 
     //onClick 메소드 : 카톡, 페북, 이메일, 로그인없이 로그인
@@ -120,20 +143,16 @@ public class LoginActivity extends Activity
                 Intent intent = new Intent(getApplicationContext(),LoginEmailActivity.class );
                 startActivity(intent);
                 break;
-            case R.id.btn_login:
-                intent = new Intent(getApplicationContext(),Main1Activity.class );
-                startActivity(intent);
-                break;
             case R.id.btn_NoLoginStart:
                 Toast.makeText(getApplicationContext(),"로그인없이 둘러보기",Toast.LENGTH_LONG).show();
                 intent = new Intent(getApplicationContext(),Main1Activity.class );
                 startActivity(intent);
                 break;
-
+            case R.id.btn_FBLoginCustom:
+                btn_FBLoginOri.performClick();
+                break;
         }
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
