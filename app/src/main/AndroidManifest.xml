@@ -54,7 +54,6 @@
             android:theme="@android:style/Theme.Dialog"
             />
         <activity android:name=".Test" />
-        <activity android:name=".ServerClient" />
 
         <!--
         추가한곳

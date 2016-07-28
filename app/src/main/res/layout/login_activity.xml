@@ -92,15 +92,5 @@
         android:layout_below="@+id/btn_EmailLogin"
         android:layout_centerHorizontal="true"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="서버테스트용"
-        android:id="@+id/btn_serverTest"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#ffffff" />
-
 
 </RelativeLayout>
