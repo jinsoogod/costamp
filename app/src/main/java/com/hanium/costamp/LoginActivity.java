@@ -121,19 +121,6 @@ public class LoginActivity extends Activity
 
             }
         });
-
-        // 서버테스트용 액티비티 이동버튼
-        // Button btn_servertest =(Button) findViewById(R.id.btn_serverTest);
-
-
-/*        //서버테스트 액티비티 이동용 onCLickListener
-        btn_servertest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServerClient.class );
-                startActivity(intent);
-            }
-        });*/
     }
 
     @Override
