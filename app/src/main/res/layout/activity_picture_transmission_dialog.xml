@@ -19,13 +19,16 @@
             android:layout_height="wrap_content"
             android:text="수락"
             android:id="@+id/btn_dialog_accept"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:onClick="clk_accept" />
 
         <Button
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:text="거절"
-            android:id="@+id/btn_dialog_reject" />
+            android:id="@+id/btn_dialog_reject"
+            android:nestedScrollingEnabled="false"
+            android:onClick="clk_reject" />
     </LinearLayout>
 
 </LinearLayout>

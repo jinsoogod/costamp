@@ -1,49 +1,126 @@
 package com.hanium.costamp;
 
 import android.app.Activity;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 // 사이니지에서 전송한 사진을 받을때 뜰 팝업창
-// 최종 수정자 : 이은영, 최종 수정 날짜 : 20160712 15:30
+// 최종 수정자 : 이은영, 최종 수정 날짜 : 20160730 21:18
 public class picture_transmission_dialog extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//전송받은 이미지
-        ImageView picture = (ImageView)findViewById(R.id.imageView_Transmission_SignagePicture);
-
-        //사진전송 수락버튼과 거절버튼
-        Button btn_accept = (Button)findViewById(R.id.btn_dialog_accept);
-        Button btn_reject = (Button)findViewById(R.id.btn_dialog_reject);
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        //앱이름 없애기
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_picture_transmission_dialog);
 
-        //이부분은 전송받은 사진 이미지뷰에 띄움
+    }
 
-/*
-        //사진전송 수락
-        btn_accept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //사진 전송 수락하면 갤러리에 저장, 내 여행루트에 등록된 곳이라면 여행기 코멘트창으로 넘어가야됨
+    // 수락 버튼
+    public void clk_accept(View v){
 
+        RequestThread thread = new RequestThread();
+        thread.start();
+
+    }
+
+    //거절 버튼
+    public void clk_reject(View v){
+
+        RejectThread thread = new RejectThread();
+        thread.start();
+    }
+
+    class RequestThread extends Thread{
+
+        DataInputStream dis;
+        FileOutputStream fos;
+        BufferedOutputStream bos;
+
+        public void run(){
+
+            try {
+
+                //소켓 아이피 & 포트
+                Socket socket = new Socket("192.168.0.14",5550);
+
+
+                //사이니지에 accept 반환
+                ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
+                outstream.writeUTF("accept");
+                outstream.flush();
+
+                dis = new DataInputStream(socket.getInputStream());
+
+                //파일 이름 불러오기
+                //String fName = dis.readUTF();
+
+                //파일 이름
+                File f = new File("upload.png");
+                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/upload.png");
+                bos = new BufferedOutputStream(fos);
+                Log.d("picture transmission","ok");
+
+                //바이트 데이터를 전송받으면서 기록
+                int len;
+                int size = 4096;
+                byte[] data = new byte[size];
+
+                while((len = dis.read(data)) > 0){
+                    bos.write(data,0,len);
+                }
+
+                bos.flush();
+                //Toast.makeText(getApplicationContext(),"파일 수신완료",Toast.LENGTH_SHORT).show();
+                Log.d("picture transmission","ok2");
+
+                outstream.close();
+                fos.close();
+                bos.close();
+                dis.close();
+                socket.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+        }
+    }
+    class RejectThread extends Thread{
+        @Override
+        public void run() {
 
-        //사진전송 거절
-        btn_reject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //거절하면 토스트메세지 띄우고 거절
-                Toast.makeText(picture_transmission_dialog.this,"사진 안받아",Toast.LENGTH_LONG).show();
+            //소켓 아이피 & 포트
+            Socket socket = null;
+            try {
+                socket = new Socket("192.168.0.14",5459);
+                //사이니지에 accept 반환
+                ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
+                outstream.writeUTF("reject");
+                outstream.flush();
+
+                outstream.close();
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
-        */
+
+        }
     }
 }
