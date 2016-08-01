@@ -40,8 +40,8 @@ public class picture_transmission_dialog extends Activity {
         //바깥쪽터치해도 dialog종료안됨
 
         //이미지뷰
-        ImageViewThread imageviewthread = new ImageViewThread();
-        imageviewthread.start();
+        //ImageViewThread imageviewthread = new ImageViewThread();
+        //imageviewthread.start();
 
 
     }
@@ -98,8 +98,8 @@ public class picture_transmission_dialog extends Activity {
                 //String fName = dis.readUTF();
 
                 //파일 이름
-                File f = new File("upload.png");
-                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/upload.png");
+                File f = new File(Environment.getExternalStorageDirectory().getPath()+"/upload.png");
+                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getPath()+"/upload.png");
                 bos = new BufferedOutputStream(fos);
                 Log.d("picture transmission","ok");
 
@@ -158,7 +158,7 @@ public class picture_transmission_dialog extends Activity {
 
             URL url = null;
             try {
-                url = new URL("//192.168.0.14//C://Users//korea//signage//upload.png");
+                url = new URL("file://192.168.0.14/Users/korea/signage/upload.png");
                 InputStream inputstream = url.openStream();
                 final Bitmap bm = BitmapFactory.decodeStream(inputstream);
 

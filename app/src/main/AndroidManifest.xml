@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-최종작업일자 20160728 15:38
+최종작업일자 20160801 21:40
 최종작업자 : 이은영
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanium.costamp">
+
+    <!-- 파일 쓰기 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!--  추가한곳 -->
     <!-- 화면이 꺼저였을때 gcm 메세지를 받기위해 디바이스를 깨움 -->
