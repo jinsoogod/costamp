@@ -1,7 +1,10 @@
 package com.hanium.costamp;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,11 +20,14 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectOutputStream;
+import java.net.MalformedURLException;
 import java.net.Socket;
+import java.net.URL;
 
 // 사이니지에서 전송한 사진을 받을때 뜰 팝업창
-// 최종 수정자 : 이은영, 최종 수정 날짜 : 20160730 21:18
+// 최종 수정자 : 이은영, 최종 수정 날짜 : 20160801 15:30
 public class picture_transmission_dialog extends Activity {
 
     @Override
@@ -33,7 +39,12 @@ public class picture_transmission_dialog extends Activity {
         setContentView(R.layout.activity_picture_transmission_dialog);
         //바깥쪽터치해도 dialog종료안됨
 
-}
+        //이미지뷰
+        ImageViewThread imageviewthread = new ImageViewThread();
+        imageviewthread.start();
+
+
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -73,7 +84,7 @@ public class picture_transmission_dialog extends Activity {
             try {
 
                 //소켓 아이피 & 포트
-                Socket socket = new Socket("192.168.0.14",5550);
+                Socket socket = new Socket("192.168.0.14",5549);
 
 
                 //사이니지에 accept 반환
@@ -123,7 +134,7 @@ public class picture_transmission_dialog extends Activity {
             //소켓 아이피 & 포트
             Socket socket = null;
             try {
-                socket = new Socket("192.168.0.14",5459);
+                socket = new Socket("192.168.0.14",5549);
                 //사이니지에 reject 반환
                 ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
                 outstream.writeUTF("reject");
@@ -137,4 +148,32 @@ public class picture_transmission_dialog extends Activity {
 
         }
     }
+
+    class ImageViewThread extends Thread{
+        Handler handler = new Handler();
+        @Override
+        public void run() {
+
+            final ImageView pictureView = (ImageView)findViewById(R.id.imageView_Transmission_SignagePicture);
+
+            URL url = null;
+            try {
+                url = new URL("//192.168.0.14//C://Users//korea//signage//upload.png");
+                InputStream inputstream = url.openStream();
+                final Bitmap bm = BitmapFactory.decodeStream(inputstream);
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        pictureView.setImageBitmap(bm);
+                    }
+                });
+                pictureView.setImageBitmap(bm);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        }
 }
