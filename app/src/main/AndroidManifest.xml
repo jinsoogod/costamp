@@ -5,18 +5,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanium.costamp">
 
-    <!-- 파일 쓰기 -->
+    <!-- 파일 저장 퍼미션 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!--  추가한곳 -->
     <!-- 화면이 꺼저였을때 gcm 메세지를 받기위해 디바이스를 깨움 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <!-- 푸시메시지를 받기위한 권한으로 name 앞에 퍼미션 포함되어야함 -->
     <permission
         android:name="com.hanium.costamp.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-
     <uses-permission android:name="com.hanium.costamp.permission.C2D_MESSAGE" />
 
     <!--     여기까지 -->

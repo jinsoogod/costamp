@@ -1,15 +1,22 @@
 package com.hanium.costamp;
 
+import android.*;
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.view.Window;
+import android.widget.Toast;
 
 // 앱을 실행시켰을 때의 처음 인트로 화면
 // 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160711 15:00
@@ -114,5 +121,6 @@ public class SplashActivity extends Activity
             AlertDialog MsgDialog = MsgBuilder.create(); // 알림창 객체 생성
             MsgDialog.show(); // 알림창 띄우기
         }
+
     }
 }

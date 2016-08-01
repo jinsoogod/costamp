@@ -1,10 +1,15 @@
 package com.hanium.costamp;
 
+import android.*;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +35,9 @@ import java.net.URL;
 // 최종 수정자 : 이은영, 최종 수정 날짜 : 20160801 15:30
 public class picture_transmission_dialog extends Activity {
 
+    private final int MY_PERMISSION_REQUEST_STORAGE = 100;
+
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,7 +51,47 @@ public class picture_transmission_dialog extends Activity {
         //ImageViewThread imageviewthread = new ImageViewThread();
         //imageviewthread.start();
 
+        //파일저장전 퍼미션 체크
 
+        //퍼미션체크
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED ||
+                checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED){
+
+            if(shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                Toast.makeText(this,"dlqcnffur",Toast.LENGTH_SHORT).show();
+            }
+
+            requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST_STORAGE);
+        }
+        else{
+        }
+
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSION_REQUEST_STORAGE:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+
+                    // permission was granted, yay! do the
+                    // calendar task you need to do.
+
+                } else {
+
+                    Log.d("permissioncheck", "Permission always deny");
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                break;
+        }
     }
 
     @Override
@@ -84,7 +132,7 @@ public class picture_transmission_dialog extends Activity {
             try {
 
                 //소켓 아이피 & 포트
-                Socket socket = new Socket("192.168.0.14",5549);
+                Socket socket = new Socket("192.168.0.14",5548);
 
 
                 //사이니지에 accept 반환
@@ -95,11 +143,11 @@ public class picture_transmission_dialog extends Activity {
                 dis = new DataInputStream(socket.getInputStream());
 
                 //파일 이름 불러오기
-                //String fName = dis.readUTF();
+                String fName = dis.readUTF();
 
                 //파일 이름
-                File f = new File(Environment.getExternalStorageDirectory().getPath()+"/upload.png");
-                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getPath()+"/upload.png");
+                File f = new File("upload.png");
+                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/upload.png");
                 bos = new BufferedOutputStream(fos);
                 Log.d("picture transmission","ok");
 
