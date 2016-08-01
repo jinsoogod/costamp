@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -30,7 +31,14 @@ public class picture_transmission_dialog extends Activity {
         //앱이름 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_picture_transmission_dialog);
+        //바깥쪽터치해도 dialog종료안됨
 
+}
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        //return super.onTouchEvent(event);
+        return false;
     }
 
     // 수락 버튼
@@ -38,14 +46,20 @@ public class picture_transmission_dialog extends Activity {
 
         RequestThread thread = new RequestThread();
         thread.start();
+        Toast.makeText(this,"사진전송이 완료 되었습니다.",Toast.LENGTH_LONG).show();
+        setResult(1002);
+        finish();
 
     }
 
     //거절 버튼
     public void clk_reject(View v){
 
+        Toast.makeText(this,"사진전송이 거절 되었습니다.",Toast.LENGTH_LONG).show();
         RejectThread thread = new RejectThread();
         thread.start();
+        setResult(1002);
+        finish();
     }
 
     class RequestThread extends Thread{
@@ -110,7 +124,7 @@ public class picture_transmission_dialog extends Activity {
             Socket socket = null;
             try {
                 socket = new Socket("192.168.0.14",5459);
-                //사이니지에 accept 반환
+                //사이니지에 reject 반환
                 ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
                 outstream.writeUTF("reject");
                 outstream.flush();

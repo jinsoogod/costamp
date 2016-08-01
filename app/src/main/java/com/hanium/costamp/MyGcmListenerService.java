@@ -33,9 +33,10 @@ public class MyGcmListenerService extends GcmListenerService {
         //알림 사운드
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         //알림 클릭시 이동할 인텐트 (사진전송 dialog)
-        Intent intent = new Intent(this, picture_transmission_dialog.class);
+        Intent intent = new Intent(this,picture_transmission.class);
         //노티피케이션을 생성할때 매개변수는 PendingIntent이므로 Intent를 PendingIntent로 만들어주어야함.
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+
 
         //노티피케이션 빌더 : 위에서 생성한 이미지나 텍스트, 사운드등을 설정해줍니다.
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
