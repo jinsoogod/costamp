@@ -48,8 +48,8 @@ public class picture_transmission_dialog extends Activity {
         //바깥쪽터치해도 dialog종료안됨
 
         //이미지뷰
-        //ImageViewThread imageviewthread = new ImageViewThread();
-        //imageviewthread.start();
+        ImageViewThread imageviewthread = new ImageViewThread();
+        imageviewthread.start();
 
         //파일저장전 퍼미션 체크
 
@@ -206,7 +206,7 @@ public class picture_transmission_dialog extends Activity {
 
             URL url = null;
             try {
-                url = new URL("file://192.168.0.14/Users/korea/signage/upload.png");
+                url = new URL("http://1.255.57.236/upload.png");
                 InputStream inputstream = url.openStream();
                 final Bitmap bm = BitmapFactory.decodeStream(inputstream);
 
@@ -216,7 +216,6 @@ public class picture_transmission_dialog extends Activity {
                         pictureView.setImageBitmap(bm);
                     }
                 });
-                pictureView.setImageBitmap(bm);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
