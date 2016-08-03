@@ -14,19 +14,20 @@ import java.util.ArrayList;
 /**
  * Created by YEP on 2016-07-26.
  */
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter
+{
     private Context mContext = null;
     private int layout = 0;
     private ArrayList<ListViewData> data = null;
     private LayoutInflater inflater = null;
 
-    public ListViewAdapter(Context c, int l, ArrayList<ListViewData> d) {
+    public ListViewAdapter(Context c, int l, ArrayList<ListViewData> d)
+    {
         this.mContext = c;
         this.layout = l;
         this.data = d;
         this.inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
 
     @Override
     public int getCount() {
@@ -59,13 +60,11 @@ public class ListViewAdapter extends BaseAdapter {
             TextView course_info2 = (TextView) convertView.findViewById(R.id.tv_courseinfo2);
             TextView course_info3 = (TextView) convertView.findViewById(R.id.tv_courseinfo3);
 
-
             course_image.setImageBitmap(data.get(position).image);
             course_info1.setText(data.get(position).info1);
             course_info2.setText(data.get(position).info2);
             course_info3.setText(data.get(position).info3);
         }
-
 
         return convertView;
     }

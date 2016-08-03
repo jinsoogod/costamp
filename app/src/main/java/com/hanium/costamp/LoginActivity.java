@@ -20,6 +20,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -32,8 +33,8 @@ import java.util.Arrays;
 import java.util.List;
 
 // 로그인 & 회원 가입 화면
-// 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160728 23:01
-//서버 테스트용 버튼추가
+// 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160802 22:12
+// 서버 테스트용 버튼추가
 // 최종 수정자 : 이은영, 최종 수정 날짜 : 20150715 02:20
 
 public class LoginActivity extends Activity
@@ -53,6 +54,7 @@ public class LoginActivity extends Activity
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // 상단바 삭제
         FacebookSdk.sdkInitialize(getApplicationContext()); // 페이스북 SDK 초기화
+        AppEventsLogger.activateApp(getApplication());
         setContentView(R.layout.login_activity);
 
         callbackManager = CallbackManager.Factory.create(); // 로그인 응답을 처리할 콜백 관리자
@@ -107,6 +109,14 @@ public class LoginActivity extends Activity
                 parameters.putString("fields", "id,name,email,gender, birthday");
                 request.setParameters(parameters);
                 request.executeAsync();
+
+                // 액티비티 이동
+                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
+
+                // 웹 상으로 정보 저장
+                Intent LoginToMain = new Intent(LoginActivity.this, LoginAddInfoActivity.class);
+                startActivity(LoginToMain);
+                finish();
             }
 
             @Override

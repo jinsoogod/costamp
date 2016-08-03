@@ -1,5 +1,6 @@
 package com.hanium.costamp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 
 //카톡이나 페북으로 로그인시 추가정보를 받는 Activity
-public class LoginAddInfoActivity extends AppCompatActivity {
+public class LoginAddInfoActivity extends Activity {
 
     RadioGroup mRadioGender;
     Spinner mSpinner1;
