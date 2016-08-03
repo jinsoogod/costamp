@@ -16,38 +16,57 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_height="110dp"
+            android:gravity="center">
 
-            <Button
-                android:id="@+id/btnCostamp"
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="코스템프" />
+                android:layout_gravity="center">
 
-            <Button
-                android:id="@+id/btnCourse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="코스제작" />
+                <Button
+                    android:id="@+id/btnCostamp"
+                    android:layout_width="69.5dp"
+                    android:layout_height="96.6dp"
+                    android:background="@drawable/main_04_icon_costamp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
-            <Button
-                android:id="@+id/btnRanking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="랭킹" />
+                <Button
+                        android:id="@+id/btnCourse"
+                        android:layout_width="69.5dp"
+                        android:layout_height="96.6dp"
+                        android:background="@drawable/main_04_icon_course"
+                        android:layout_alignTop="@+id/btnCostamp"
+                        android:layout_toRightOf="@+id/btnCostamp"
+                        android:layout_toEndOf="@+id/btnCostamp"
+                        android:layout_marginLeft="15dp" />
 
-            <Button
-                android:id="@+id/btnPhoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="사진" />
+                <Button
+                        android:id="@+id/btnRanking"
+                        android:layout_width="69.5dp"
+                        android:layout_height="96.6dp"
+                        android:background="@drawable/main_04_icon_rank"
+                        android:layout_alignTop="@+id/btnCourse"
+                        android:layout_toRightOf="@+id/btnCourse"
+                        android:layout_toEndOf="@+id/btnCourse"
+                        android:layout_marginLeft="15dp" />
+
+                <Button
+                        android:id="@+id/btnPhoto"
+                        android:layout_width="69.5dp"
+                        android:layout_height="96.6dp"
+                        android:background="@drawable/main_04_icon_picture"
+                        android:layout_alignTop="@+id/btnRanking"
+                        android:layout_toRightOf="@+id/btnRanking"
+                        android:layout_toEndOf="@+id/btnRanking"
+                        android:layout_marginLeft="15dp" />
+            </LinearLayout>
 
         </LinearLayout>
         <!--<FrameLayout-->
