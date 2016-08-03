@@ -4,9 +4,13 @@ package com.hanium.costamp;
  * Created by YEP on 2016-07-16.
  */
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +24,11 @@ import java.util.ArrayList;
 //메인화면에서 COSTAMP탭 Fragment
 public class Fragment1 extends Fragment {
 
-
+    ViewPager pager;
     View view;
 
+
+    Activity ad= this.getActivity();
     Spinner mSpinner11;
     Spinner mSpinner12;
 
@@ -102,6 +108,30 @@ public class Fragment1 extends Fragment {
         mSpinner12.setAdapter(adapter);
     }
 
+
+
+    // 이미지 로딩
+    class ImageLoading extends AsyncTask<Void, Void, ArrayList<Bitmap>> {
+        @Override
+        protected ArrayList<Bitmap> doInBackground(Void... params) {
+            ArrayList<Bitmap> bitmaps = new ArrayList<>();
+            //비트맵 사이즈 줄여서 로딩
+            BitmapFactory.Options bo = new BitmapFactory.Options();
+            bo.inSampleSize = 2;
+            for(int i=0; i<2; i++){
+                bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.testimage1+i, bo));
+            }
+            return bitmaps;
+        }
+
+        //어댑터 적용
+        @Override
+        protected void onPostExecute(ArrayList<Bitmap> bitmaps) {
+            super.onPostExecute(bitmaps);
+            ImageAdapterAd adapter = new ImageAdapterAd(ad, bitmaps);
+            pager.setAdapter(adapter);
+        }
+    }
 
 }
 

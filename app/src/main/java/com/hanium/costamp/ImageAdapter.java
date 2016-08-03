@@ -17,10 +17,10 @@ public class ImageAdapter extends BaseAdapter {
 //RelativeLayout rel;
     private Integer[] mThumblds = {R.drawable.testimage1, R.drawable.testimage2,
             R.drawable.testimage1,
-            R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-            R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-            R.drawable.testimage2
-    };
+    R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
+    R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
+    R.drawable.testimage2
+};
 
 
     public ImageAdapter(Context context) {
