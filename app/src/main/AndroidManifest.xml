@@ -9,16 +9,17 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!--  추가한곳 -->
+    <!-- 추가한곳 -->
     <!-- 화면이 꺼저였을때 gcm 메세지를 받기위해 디바이스를 깨움 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 푸시메시지를 받기위한 권한으로 name 앞에 퍼미션 포함되어야함 -->
     <permission
         android:name="com.hanium.costamp.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.hanium.costamp.permission.C2D_MESSAGE" />
 
-    <!--     여기까지 -->
+    <!-- 여기까지 -->
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -67,7 +68,7 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Test" />
 
-        <!--         추가한곳 -->
+        <!-- 추가한곳 -->
 
 
         <!-- GCM메세지를 기다리는 리시버, 메세지가 오면 MyGcmListenerService를 실행 -->
@@ -114,9 +115,11 @@
             </intent-filter>
             ﻿
         </service>
-        <!--         여기까지 -->
+        <!-- 여기까지 -->
 
-        <activity android:name=".picture_transmission"></activity>
+        <activity android:name=".picture_transmission" />
+        <activity android:name=".CourseActivity" />
+        <activity android:name=".Course2Activity"></activity>
     </application>
 
 </manifest>

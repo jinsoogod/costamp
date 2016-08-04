@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,41 +14,61 @@
             android:id="@+id/iv_course"
             android:layout_width="95dp"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_margin="5dp"
             android:src="#b91c1c" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tv_courseinfo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#111111" />
+
+                <Button
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_alignBottom="@+id/tv_courseinfo1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="Like"
+                    android:onClick="OnClick" />
+
+
+            </RelativeLayout>
 
             <TextView
-                android:textColor="#111111"
+                android:id="@+id/tv_courseinfo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/tv_courseinfo1" />
-
-            <TextView
-                android:textColor="#111111"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/tv_courseinfo2" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#111111" />
 
             <TextView
-                android:textColor="#111111"
+                android:id="@+id/tv_courseinfo3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/tv_courseinfo3" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#111111" />
         </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>

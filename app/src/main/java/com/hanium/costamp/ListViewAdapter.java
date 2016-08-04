@@ -2,10 +2,12 @@ package com.hanium.costamp;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +22,8 @@ public class ListViewAdapter extends BaseAdapter
     private int layout = 0;
     private ArrayList<ListViewData> data = null;
     private LayoutInflater inflater = null;
-
+    Button mBtn_like;
+    Boolean mBtn_checked;
     public ListViewAdapter(Context c, int l, ArrayList<ListViewData> d)
     {
         this.mContext = c;
@@ -51,7 +54,6 @@ public class ListViewAdapter extends BaseAdapter
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-
         if (convertView == null) {
             convertView = inflater.inflate(this.layout, parent, false);
         } else {
@@ -67,5 +69,26 @@ public class ListViewAdapter extends BaseAdapter
         }
 
         return convertView;
+    }
+
+    public void onClick(View v) {
+
+         mBtn_checked = false;
+
+        switch (v.getId()) {
+            case R.id.btn_like:
+                if (mBtn_checked) {
+                    mBtn_like.setBackgroundColor(Color.BLACK);
+//                    Toast.makeText(Activi, "좋아요가 선택되었습니다.", Toast.LENGTH_SHORT).show();
+                    mBtn_checked=true;
+                    //Boolean update 할 부분
+                } else {
+                    mBtn_like.setBackgroundColor(Color.BLACK);
+//                    Toast.makeText(getApplicationContext(), "좋아요가 취소되었습니다.", Toast.LENGTH_SHORT).show();
+                    mBtn_checked=false;
+                    //Boolean update 할 부분
+                }
+                break;
+        }
     }
 }

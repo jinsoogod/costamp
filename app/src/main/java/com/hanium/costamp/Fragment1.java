@@ -4,11 +4,8 @@ package com.hanium.costamp;
  * Created by YEP on 2016-07-16.
  */
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -27,8 +24,6 @@ public class Fragment1 extends Fragment {
     ViewPager pager;
     View view;
 
-
-    Activity ad= this.getActivity();
     Spinner mSpinner11;
     Spinner mSpinner12;
 
@@ -38,22 +33,27 @@ public class Fragment1 extends Fragment {
     ListViewData test1, test2, test3, test4;
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-         view = inflater.inflate(R.layout.fragment1, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment1, container, false);
         mSpinner11 = (Spinner) view.findViewById(R.id.spinner11);
         mSpinner12 = (Spinner) view.findViewById(R.id.spinner12);
+        pager = (ViewPager) view.findViewById(R.id.adpager);
 
         initSpinner11();
         initSpinner12();
 
         listView = (ListView) view.findViewById(R.id.listView);
 
-        test1 = new ListViewData("A코스", "코스 정보2", "코스 정보3", BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
-        test2 = new ListViewData("B코스", "코스 정보2", "코스 정보3", BitmapFactory.decodeResource(getResources(), R.drawable.testimage2));
-        test3 = new ListViewData("C코스", "코스 정보2", "코스 정보3", BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
-        test4 = new ListViewData("D코스", "코스 정보2", "코스 정보3", BitmapFactory.decodeResource(getResources(), R.drawable.testimage2));
+        test1 = new ListViewData("A여행지", "가나라 정보2", "정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
+        test2 = new ListViewData("B여행지", "아앙정보2", "정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage2));
+        test3 = new ListViewData("C여행지", "아아으 정보2", "정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
+        test4 = new ListViewData("D여행지", "123정보2", " 정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage2));
 
         course_info_list = new ArrayList<ListViewData>();
         course_info_list.add(test1);
@@ -68,8 +68,10 @@ public class Fragment1 extends Fragment {
 
         courseAdapter = new ListViewAdapter(getActivity(), R.layout.fragment1_listview, course_info_list);
         listView.setAdapter(courseAdapter);
+
         return view;
     }
+
 
     //지역별로 사진을 볼 수 있도록 하는 Spinner2를 초기화하는 메소드
     public void initSpinner11() {
@@ -104,36 +106,14 @@ public class Fragment1 extends Fragment {
         adapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
 
-        mSpinner12= (Spinner) view.findViewById(R.id.spinner12);
+        mSpinner12 = (Spinner) view.findViewById(R.id.spinner12);
         mSpinner12.setAdapter(adapter);
     }
 
 
-
-    // 이미지 로딩
-    class ImageLoading extends AsyncTask<Void, Void, ArrayList<Bitmap>> {
-        @Override
-        protected ArrayList<Bitmap> doInBackground(Void... params) {
-            ArrayList<Bitmap> bitmaps = new ArrayList<>();
-            //비트맵 사이즈 줄여서 로딩
-            BitmapFactory.Options bo = new BitmapFactory.Options();
-            bo.inSampleSize = 2;
-            for(int i=0; i<2; i++){
-                bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.testimage1+i, bo));
-            }
-            return bitmaps;
-        }
-
-        //어댑터 적용
-        @Override
-        protected void onPostExecute(ArrayList<Bitmap> bitmaps) {
-            super.onPostExecute(bitmaps);
-            ImageAdapterAd adapter = new ImageAdapterAd(ad, bitmaps);
-            pager.setAdapter(adapter);
-        }
-    }
-
 }
+
+
 
 
 
