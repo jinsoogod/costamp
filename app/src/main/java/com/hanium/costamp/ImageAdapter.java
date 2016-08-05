@@ -15,8 +15,8 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
     Context context;
 //RelativeLayout rel;
-    private Integer[] mThumblds = {R.drawable.testimage1, R.drawable.testimage2,
-            R.drawable.testimage1,
+    private Integer[] mThumblds = {
+            R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
     R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
     R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
     R.drawable.testimage2

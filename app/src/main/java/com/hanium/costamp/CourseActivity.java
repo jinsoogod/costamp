@@ -38,8 +38,6 @@ public class CourseActivity extends AppCompatActivity {
         });
 
 
-        // 좋아요 된 여행지만 //뭔소린지 알꺼야..  아무리
-        // 개떡 같이 말해도 오빤 찰떡 같이..
         // 좋아요 된 애들만 출력해주기
         test1 = new ListViewData("카멜리아힐", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
         test2 = new ListViewData("섭지코지", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));

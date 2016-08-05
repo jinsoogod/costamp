@@ -2,12 +2,10 @@ package com.hanium.costamp;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,16 +14,13 @@ import java.util.ArrayList;
 /**
  * Created by YEP on 2016-07-26.
  */
-public class ListViewAdapter extends BaseAdapter
-{
+public class ListViewAdapter extends BaseAdapter {
     private Context mContext = null;
     private int layout = 0;
     private ArrayList<ListViewData> data = null;
     private LayoutInflater inflater = null;
-    Button mBtn_like;
-    Boolean mBtn_checked;
-    public ListViewAdapter(Context c, int l, ArrayList<ListViewData> d)
-    {
+
+    public ListViewAdapter(Context c, int l, ArrayList<ListViewData> d) {
         this.mContext = c;
         this.layout = l;
         this.data = d;
@@ -53,6 +48,10 @@ public class ListViewAdapter extends BaseAdapter
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
+
+        final int pos = position;
+
         // TODO Auto-generated method stub
         if (convertView == null) {
             convertView = inflater.inflate(this.layout, parent, false);
@@ -66,29 +65,24 @@ public class ListViewAdapter extends BaseAdapter
             course_info1.setText(data.get(position).info1);
             course_info2.setText(data.get(position).info2);
             course_info3.setText(data.get(position).info3);
+
         }
+//
+//        Button mBtn_like = (Button) convertView.findViewById(R.id.btn_tmp);
+//        mBtn_like.setOnClickListener(mClickListener);
+
 
         return convertView;
+
     }
 
-    public void onClick(View v) {
+//    public AdapterView.OnClickListener mClickListener = new AdapterView.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            String str = data.get(position).info1 + "를 좋아요 하였습니다.";
+//            Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
+//        }
+//
+//    };
 
-         mBtn_checked = false;
-
-        switch (v.getId()) {
-            case R.id.btn_like:
-                if (mBtn_checked) {
-                    mBtn_like.setBackgroundColor(Color.BLACK);
-//                    Toast.makeText(Activi, "좋아요가 선택되었습니다.", Toast.LENGTH_SHORT).show();
-                    mBtn_checked=true;
-                    //Boolean update 할 부분
-                } else {
-                    mBtn_like.setBackgroundColor(Color.BLACK);
-//                    Toast.makeText(getApplicationContext(), "좋아요가 취소되었습니다.", Toast.LENGTH_SHORT).show();
-                    mBtn_checked=false;
-                    //Boolean update 할 부분
-                }
-                break;
-        }
-    }
 }

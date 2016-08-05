@@ -5,16 +5,21 @@ package com.hanium.costamp;
  */
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 
@@ -32,6 +37,8 @@ public class Fragment1 extends Fragment {
     ListViewAdapter courseAdapter;
     ListViewData test1, test2, test3, test4;
 
+    Button mBtn_like;
+    Boolean mBtn_checked;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,12 +72,35 @@ public class Fragment1 extends Fragment {
         course_info_list.add(test3);
         course_info_list.add(test4);
 
-
         courseAdapter = new ListViewAdapter(getActivity(), R.layout.fragment1_listview, course_info_list);
         listView.setAdapter(courseAdapter);
 
+        listView.setOnItemClickListener(mItemClickListener);
+
         return view;
-    }
+   }
+
+    public AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent(getActivity(), CourseInfoActivity.class);
+
+            //여행지 사진  intent.putExtra
+            Bitmap sendBitmap = course_info_list.get(position).image;
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            sendBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            intent.putExtra("image",byteArray);
+
+            //여행지 정보 intent.putExtra
+            intent.putExtra("info1",course_info_list.get(position).info1.toString());
+            intent.putExtra("info2",course_info_list.get(position).info2.toString());
+            intent.putExtra("info3",course_info_list.get(position).info3.toString());
+            intent.putExtra("like",course_info_list.get(position).like);
+            startActivity(intent);
+
+        }
+    };
 
 
     //지역별로 사진을 볼 수 있도록 하는 Spinner2를 초기화하는 메소드

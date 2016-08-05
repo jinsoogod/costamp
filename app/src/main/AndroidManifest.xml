@@ -119,7 +119,8 @@
 
         <activity android:name=".picture_transmission" />
         <activity android:name=".CourseActivity" />
-        <activity android:name=".Course2Activity"></activity>
+        <activity android:name=".Course2Activity" />
+        <activity android:name=".CourseInfoActivity"></activity>
     </application>
 
 </manifest>
