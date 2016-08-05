@@ -132,7 +132,7 @@ public class picture_transmission_dialog extends Activity {
             try {
 
                 //소켓 아이피 & 포트
-                Socket socket = new Socket("192.168.0.14",5548);
+                Socket socket = new Socket("192.168.0.14",5549);
 
 
                 //사이니지에 accept 반환
