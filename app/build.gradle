@@ -35,6 +35,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
+    compile group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
+
     // 카카오톡 SDK를 사용하기 위해서 필요.
     compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
 
@@ -45,8 +47,8 @@ dependencies {
 
     // 페이스북 SDK를 사용하기 위해 필요.
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-    //gcm을 사용하기위해필요
-    compile "com.google.android.gms:play-services-gcm:8.3.0"
 
+    // gcm을 사용하기위해필요
+    compile "com.google.android.gms:play-services-gcm:8.3.0"
 }
 
