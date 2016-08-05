@@ -35,24 +35,13 @@
             android:background="@drawable/btn_login_facebook"
             android:onClick="onClick" />
 
-        <!-- 진짜 카카오톡 로그인 API가 담긴 버튼 -->
-
-        <com.kakao.usermgmt.LoginButton
-            android:id="@+id/btn_KakaoLoginOri"
-            android:layout_width="198.67dp"
-            android:layout_height="24.33dp"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="355.25dp"
-            android:visibility="gone" />
-
         <Button
             android:id="@+id/btn_KakaoLoginCustom"
             android:layout_width="198.67dp"
             android:layout_height="24.33dp"
             android:layout_marginLeft="75dp"
             android:layout_marginTop="355.25dp"
-            android:background="@drawable/btn_login_kakao"
-            android:onClick="onClick" />
+            android:background="@drawable/btn_login_kakao" />
 
     </FrameLayout>
 
