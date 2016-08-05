@@ -44,11 +44,12 @@
                     android:id="@+id/btn_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="?android:attr/buttonStyleSmall"
+
                     android:layout_alignBottom="@+id/tv_courseinfo1"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:text="Like"
+
                     android:onClick="onClick" />
 
 
