@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-최종작업일자 20160801 21:40
-최종작업자 : 이은영
+최종작업일자 20160805 18:00
+최종작업자 : 유재혁
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanium.costamp">
@@ -26,6 +26,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,6 +34,13 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- 카카오톡 로그인 키 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
+        <!-- 페이스북 로그인 키 -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
