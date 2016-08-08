@@ -60,7 +60,7 @@ public class picture_transmission_dialog extends Activity {
                         != PackageManager.PERMISSION_GRANTED){
 
             if(shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                Toast.makeText(this,"dlqcnffur",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"입출력",Toast.LENGTH_SHORT).show();
             }
 
             requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST_STORAGE);
@@ -132,7 +132,7 @@ public class picture_transmission_dialog extends Activity {
             try {
 
                 //소켓 아이피 & 포트
-                Socket socket = new Socket("192.168.0.14",5549);
+                Socket socket = new Socket("192.168.0.14",5533);
 
 
                 //사이니지에 accept 반환
@@ -146,8 +146,8 @@ public class picture_transmission_dialog extends Activity {
                 String fName = dis.readUTF();
 
                 //파일 이름
-                File f = new File("upload.png");
-                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/upload.png");
+                File f = new File(fName);
+                fos = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+fName);
                 bos = new BufferedOutputStream(fos);
                 Log.d("picture transmission","ok");
 
@@ -182,7 +182,7 @@ public class picture_transmission_dialog extends Activity {
             //소켓 아이피 & 포트
             Socket socket = null;
             try {
-                socket = new Socket("192.168.0.14",5549);
+                socket = new Socket("192.168.0.14",5533);
                 //사이니지에 reject 반환
                 ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
                 outstream.writeUTF("reject");
