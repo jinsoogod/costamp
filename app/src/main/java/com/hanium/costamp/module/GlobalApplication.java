@@ -1,14 +1,15 @@
-package com.hanium.costamp;
+package com.hanium.costamp.module;
 
 import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
+import com.hanium.costamp.KakaoSDKAdapter;
 import com.kakao.auth.KakaoSDK;
 
 // (카카오) 캐시를 앱 수준에서 관리하기 위한 어플리케이션 객체이다.
 // 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160805 19:00
-public class GlobalApplication extends Application
+public class GlobalApplication extends AppController
 {
     private static GlobalApplication mInstance;
     private static volatile Activity currentActivity = null;

@@ -50,5 +50,8 @@ dependencies {
 
     // gcm을 사용하기위해필요
     compile "com.google.android.gms:play-services-gcm:8.3.0"
+
+    // volley 라이브러리 적용
+    compile 'com.android.volley:volley:1.0.0'
 }
 

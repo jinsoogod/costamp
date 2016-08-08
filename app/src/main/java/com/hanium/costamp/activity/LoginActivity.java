@@ -1,16 +1,12 @@
-package com.hanium.costamp;
+package com.hanium.costamp.activity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageInstaller;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.InputMethod;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,9 +20,12 @@ import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.hanium.costamp.LoginAddInfoActivity;
+import com.hanium.costamp.LoginEmailActivity;
+import com.hanium.costamp.Main1Activity;
+import com.hanium.costamp.R;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
-import com.kakao.auth.KakaoSDK;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;

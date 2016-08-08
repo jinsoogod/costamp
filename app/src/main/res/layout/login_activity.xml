@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
-    tools:context="com.hanium.costamp.LoginActivity">
+    tools:context=".activity.LoginActivity">
 
     <!-- 페이스북 로그인 버튼 -->
     <!-- 커스터마이징을 위해서 FrameLayout으로 겹쳐서 둠 -->

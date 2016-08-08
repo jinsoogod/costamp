@@ -1,22 +1,15 @@
-package com.hanium.costamp;
+package com.hanium.costamp.activity;
 
-import android.*;
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.view.Window;
-import android.widget.Toast;
 
 // 앱을 실행시켰을 때의 처음 인트로 화면
 // 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160711 15:00
@@ -31,7 +24,7 @@ public class SplashActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // 상단바 삭제
-        setContentView(R.layout.activity_splash);
+        setContentView(com.hanium.costamp.R.layout.activity_splash);
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE); // 연결 상태를 확인하기 위한 ConnectivityManager 객체 선언
 

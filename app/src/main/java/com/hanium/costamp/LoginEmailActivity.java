@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.hanium.costamp.activity.LoginActivity;
+
 import java.util.ArrayList;
 
 // E-mail로 회원 가입 화면
