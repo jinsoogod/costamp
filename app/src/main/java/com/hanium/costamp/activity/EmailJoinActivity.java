@@ -1,4 +1,4 @@
-package com.hanium.costamp;
+package com.hanium.costamp.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +14,15 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.hanium.costamp.activity.LoginActivity;
+import com.hanium.costamp.Main1Activity;
+import com.hanium.costamp.R;
 
 import java.util.ArrayList;
 
 // E-mail로 회원 가입 화면
 // 최종 수정자 : 표영은, 최종 수정 날짜 : 20160712 01:20
 
-public class LoginEmailActivity extends AppCompatActivity {
+public class EmailJoinActivity extends AppCompatActivity {
     EditText mEditEmail;
     EditText mEditPassword;
     EditText mEditRePassword;
@@ -32,7 +33,7 @@ public class LoginEmailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_email);
+        setContentView(R.layout.email_join);
 
         //입력 정보를 각각 멤버변수에 저장
         mEditEmail = (EditText) findViewById(R.id.editText);

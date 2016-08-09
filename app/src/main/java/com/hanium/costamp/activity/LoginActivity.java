@@ -21,7 +21,6 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.hanium.costamp.LoginAddInfoActivity;
-import com.hanium.costamp.LoginEmailActivity;
 import com.hanium.costamp.Main1Activity;
 import com.hanium.costamp.R;
 import com.kakao.auth.AuthType;
@@ -240,7 +239,7 @@ public class LoginActivity extends Activity
         {
             //E-mail로 가입하기 : LoginEmailActivity실행
             case R.id.btn_EmailLogin:
-                Intent intent = new Intent(getApplicationContext(),LoginEmailActivity.class );
+                Intent intent = new Intent(getApplicationContext(),EmailJoinActivity.class );
                 startActivity(intent);
                 break;
             case R.id.btn_NoLoginStart:

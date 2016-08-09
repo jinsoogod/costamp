@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:onClick="onClick"
     android:orientation="vertical"
-    tools:context="com.hanium.costamp.LoginEmailActivity">
+    tools:context=".activity.EmailJoinActivity">
 
     <!--    <ImageView
             android:id="@+id/imageView"

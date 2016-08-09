@@ -64,7 +64,7 @@
             android:authorities="com.facebook.app.FacebookContentProvider282282252133585"
             android:exported="true" />
 
-        <activity android:name=".LoginEmailActivity" />
+        <activity android:name=".activity.EmailJoinActivity" />
         <activity android:name=".LoginAddInfoActivity" />
         <activity
             android:name=".Main1Activity"

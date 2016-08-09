@@ -3,7 +3,6 @@ package com.hanium.costamp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -29,7 +28,7 @@ public class LoginAddInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_email);
+        setContentView(R.layout.email_join);
 
         //입력 정보를 각각 멤버변수에 저장
         mRadioGender = (RadioGroup) findViewById(R.id.radioGroupGender);
