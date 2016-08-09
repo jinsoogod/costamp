@@ -223,4 +223,7 @@ public class picture_transmission_dialog extends Activity {
             }
         }
         }
+
+
+
 }

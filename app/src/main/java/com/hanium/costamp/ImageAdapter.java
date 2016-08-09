@@ -2,25 +2,56 @@ package com.hanium.costamp;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static com.hanium.costamp.picture_transmission_dialog.*;
+
 /**
  * Created by YEP on 2016-08-04.
  */
+//최종 작업일자 160809 10:11
+    //최종 작업자 : 으녕
 
 public class ImageAdapter extends BaseAdapter {
+    static String[] mThumblds = new String[100];
+
+
+    Thread setImage = new Thread(new Runnable(){
+        @Override
+        public void run() {
+            int i=0;
+            String[] items=new String[100];
+            while(i<items.length){
+                items[i] ="http://1.255.57.236/picture/upload"+Integer.toString(i)+".png";
+                if(items[i] == null){
+                    ImageAdapter.mThumblds=items;
+                    break;
+                }
+                i++;
+            }
+        }
+    });
+
+    public void setSetImage() {
+    }
+
     Context context;
 //RelativeLayout rel;
-    private Integer[] mThumblds = {
-            R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-    R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-    R.drawable.testimage2, R.drawable.testimage1, R.drawable.testimage2, R.drawable.testimage1,
-    R.drawable.testimage2
-};
+
 
 
     public ImageAdapter(Context context) {
@@ -34,7 +65,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return mThumblds[position];
     }
 
     @Override
@@ -43,8 +74,8 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final int pos = position;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        setSetImage();
         ImageView imageView;
 
 
@@ -58,8 +89,13 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumblds[position]);
 
+        String url = (String) getItem(position);
+        Picasso.with(context)
+                .load(url)
+                .placeholder(R.drawable.loader)
+                .fit()
+                .centerCrop().into(imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
 
@@ -67,14 +103,13 @@ public class ImageAdapter extends BaseAdapter {
                 View dialogView = (View) View.inflate(context, R.layout.fragment4_dialog, null);
                 AlertDialog.Builder dlg = new AlertDialog.Builder(context);
                 ImageView image10 = (ImageView) dialogView.findViewById(R.id.image10);
-                image10.setImageResource(mThumblds[pos]);
+                //image10.setImageResource(mThumblds[position]);
                 dlg.setView(dialogView);
                 dlg.setNegativeButton("닫기", null);
                 dlg.show();
             }
         });
-
-
         return imageView;
     }
+
 }

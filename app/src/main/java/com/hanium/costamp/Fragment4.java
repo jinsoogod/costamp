@@ -3,6 +3,8 @@ package com.hanium.costamp;
 /**
  * Created by YEP on 2016-07-16.
  */
+//최종 작업일자 160809 10:08
+//최종 작업자 : 으녕으녕
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -23,6 +27,8 @@ public class Fragment4 extends Fragment {
     Spinner mSpinner3;
     GridView mGridview;
     View view;
+
+
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,6 +87,7 @@ public class Fragment4 extends Fragment {
         mSpinner3 = (Spinner) view.findViewById(R.id.spinner3);
         mSpinner3.setAdapter(adapter);
     }
+
 
 
 }
