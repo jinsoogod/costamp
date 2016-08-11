@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class CourseActivity extends AppCompatActivity {
     Button mBtn_makingCourse;
+    Button btn_MapView;
     ListView listView;
 
     //ListViewData= 여행지 data
@@ -29,10 +30,21 @@ public class CourseActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         mBtn_makingCourse = (Button) findViewById(R.id.btn_makingCourse);
 
+        //맵뷰 테스트용 버튼
+        btn_MapView = (Button)findViewById(R.id.btn_mapview);
+
         mBtn_makingCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (getApplicationContext(),Course2Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_MapView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(),MapView.class);
                 startActivity(intent);
             }
         });

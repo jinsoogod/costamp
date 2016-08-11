@@ -17,6 +17,20 @@
         android:name="com.hanium.costamp.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
+    <!-- 구글맵 사용을 위한 permission -->
+    <permission
+        android:name="com.hanium.costamp.permission.locationapi.maps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <!-- 구글맵 사용을위한 uses-permission -->
+    <uses-permission android:name="com.hanium.costamp.locationapi.maps.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <uses-permission android:name="com.hanium.costamp.permission.C2D_MESSAGE" />
 
     <!-- 여기까지 -->
@@ -44,6 +58,11 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
+        <!-- 지도 api key -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyA1jr7fjYXq2jHJSbczf2moVBFcGXtz1sM" />
 
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
@@ -128,7 +147,8 @@
         <activity android:name=".picture_transmission" />
         <activity android:name=".CourseActivity" />
         <activity android:name=".Course2Activity" />
-        <activity android:name=".CourseInfoActivity"></activity>
+        <activity android:name=".CourseInfoActivity" />
+        <activity android:name=".MapView"></activity>
     </application>
 
 </manifest>

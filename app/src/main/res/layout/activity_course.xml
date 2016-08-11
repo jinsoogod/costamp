@@ -66,6 +66,15 @@
             android:layout_centerVertical="true"
             android:text="코스 제작" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MapView"
+            android:id="@+id/btn_mapview"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
 
 </LinearLayout>

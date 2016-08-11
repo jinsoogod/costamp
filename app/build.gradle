@@ -25,36 +25,30 @@ android {
     }
 }
 
-repositories{
+repositories {
     mavenCentral()
 }
 
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-
     compile group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
-
     // 카카오톡 SDK를 사용하기 위해서 필요.
     compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
-
     // PUSH SDK를 사용하기 위해 필요.
     compile group: 'com.kakao.sdk', name: 'push', version: project.KAKAO_SDK_VERSION
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-
     // 페이스북 SDK를 사용하기 위해 필요.
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-
     // gcm을 사용하기위해필요
-    compile "com.google.android.gms:play-services-gcm:8.3.0"
-
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
     // volley 라이브러리 적용
     compile 'com.android.volley:volley:1.0.0'
-
     //url 사용 해서 그리드뷰 표시
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.gms:play-services:8.3.0'
 }
 

@@ -35,18 +35,15 @@ public class ImageAdapter extends BaseAdapter {
         public void run() {
             int i=0;
             String[] items=new String[100];
-            while(i<items.length){
+            while(i<100){
                 items[i] ="http://1.255.57.236/picture/upload"+Integer.toString(i)+".png";
-                if(items[i] == null){
-                    ImageAdapter.mThumblds=items;
-                    break;
-                }
                 i++;
             }
         }
     });
 
     public void setSetImage() {
+        setImage.start();
     }
 
     Context context;
@@ -75,7 +72,6 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        setSetImage();
         ImageView imageView;
 
 
