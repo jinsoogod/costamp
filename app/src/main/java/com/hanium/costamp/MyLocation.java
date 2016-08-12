@@ -1,4 +1,4 @@
-package com.hanium.costamp.module;
+package com.hanium.costamp;
 
 import android.location.Location;
 import android.content.Context;
