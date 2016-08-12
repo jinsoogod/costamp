@@ -37,7 +37,6 @@ public class MapView extends Activity {
         Marker pknu = map.addMarker(new MarkerOptions().position(PKNU)
                 .title("PKNU"));
 
-        //현재 위치로 가는 버튼 표시
 
         //초기 위치
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(PKNU, 15));
@@ -58,7 +57,7 @@ public class MapView extends Activity {
         else{
         }
 
-
+        //현재 위치로 가는 버튼 표시
         map.setMyLocationEnabled(true);
 
         MyLocation.LocationResult locationResult = new MyLocation.LocationResult() {
@@ -79,7 +78,7 @@ public class MapView extends Activity {
 
         //currentPosition 위치로 카메라 중심을 옮기고 화면 줌을 조정함
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentPosition,17));
-        map.animateCamera(CameraUpdateFactory.zoomTo(17),2000,null);
+        map.animateCamera(CameraUpdateFactory.zoomTo(14),2000,null);
 
         //마커 추가함
         map.addMarker(new MarkerOptions().position(currentPosition).snippet("Lat : "+location.getLatitude() + "Lng : " + location.getLongitude())
