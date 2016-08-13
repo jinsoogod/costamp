@@ -30,17 +30,25 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+//최종 작업일자 160813 11:00
+//최종 작업자 : 이으녕
+
 public class MapView extends Activity {
 
+    //direction Request button
     private Button btn_RequestDirection;
     private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
 
 
+
     static final LatLng PKNU = new LatLng(35.1338149,129.1015348);
     private GoogleMap map;
+    //direction api를 사용하기위한 인터넷 server Key
     //String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilxxxxxxxxx";
     String serverKey ="AIzaSyC5atU8_OZIE9Bkf5q0g6VKCXOhrOQ1HPw";
+    //origin
     LatLng origin = new LatLng(35.1338149,129.1015348); //pknu
+    //destinaion
     LatLng destination = new LatLng(35.1531863,129.1099112); //광안리해수욕장
 
 
@@ -52,8 +60,11 @@ public class MapView extends Activity {
 
         btn_RequestDirection = (Button)findViewById(R.id.btn_RequestDirection);
 
+        //getmap
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                 .getMap();
+
+        //초기 마커표시
         Marker pknu = map.addMarker(new MarkerOptions().position(PKNU)
                 .title("PKNU"));
 
@@ -89,8 +100,10 @@ public class MapView extends Activity {
             }
         };
 
+        //카메라 움직임
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(PKNU, 14));
 
+        //길찾기 요청
         btn_RequestDirection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +126,8 @@ public class MapView extends Activity {
                 .title("현재위치"));
     }
 
+
+    //길찾기요청
     public void requestDirection() {
         Snackbar.make(btn_RequestDirection, "Direction Requesting...", Snackbar.LENGTH_SHORT).show();
         GoogleDirection.withServerKey(serverKey)
@@ -122,7 +137,7 @@ public class MapView extends Activity {
                 .execute(new DirectionCallback(){
                     @Override
                     public void onDirectionSuccess(Direction direction, String rawBody) {
-                        Snackbar.make(btn_RequestDirection, "Success with status : " + direction.getStatus(), Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(btn_RequestDirection, "Success with status : " + direction.getStatus(), Snackbar.LENGTH_LONG).show();
                         if (direction.isOK()) {
                             ArrayList<LatLng> sectionPositionList = direction.getRouteList().get(0).getLegList().get(0).getSectionPoint();
                             for (LatLng position : sectionPositionList) {

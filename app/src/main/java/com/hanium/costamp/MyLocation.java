@@ -13,6 +13,10 @@ import java.util.TimerTask;
 /**
  * Created by korea on 2016-08-12.
  */
+
+//최종 작업일자 160813 11:00
+//최종 작업자 : 이으녕
+
 public class MyLocation {
 
     Timer timer1;
