@@ -26,7 +26,6 @@ public class SplashActivity extends Activity
     boolean isInternetMobile = false; // 3G망 상태 값 저장
 
 
-    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
