@@ -28,6 +28,7 @@ public class Fragment1 extends Fragment {
 
     ViewPager pager;
     View view;
+    View header;
 
     Spinner mSpinner11;
     Spinner mSpinner12;
@@ -74,7 +75,8 @@ public class Fragment1 extends Fragment {
 
         courseAdapter = new ListViewAdapter(getActivity(), R.layout.fragment1_listview, course_info_list);
         listView.setAdapter(courseAdapter);
-
+        header = inflater.inflate(R.layout.fragment1,null,false);
+        listView.addHeaderView(header);
         listView.setOnItemClickListener(mItemClickListener);
 
         return view;
@@ -97,6 +99,7 @@ public class Fragment1 extends Fragment {
             intent.putExtra("info2",course_info_list.get(position).info2.toString());
             intent.putExtra("info3",course_info_list.get(position).info3.toString());
             intent.putExtra("like",course_info_list.get(position).like);
+
             startActivity(intent);
 
         }
