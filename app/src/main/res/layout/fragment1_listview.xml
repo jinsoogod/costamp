@@ -56,7 +56,6 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#111111" />
 
-
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
