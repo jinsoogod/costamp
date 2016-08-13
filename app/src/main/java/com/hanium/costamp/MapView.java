@@ -60,19 +60,6 @@ public class MapView extends Activity {
         setContentView(R.layout.activity_map_view);
 
         btn_RequestDirection = (Button)findViewById(R.id.btn_RequestDirection);
-
-        //getmap
-        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
-                .getMap();
-
-        //초기 마커표시
-        Marker pknu = map.addMarker(new MarkerOptions().position(PKNU)
-                .title("PKNU"));
-
-
-        //초기 위치
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(PKNU, 15));
-
         //위치 찾기 퍼미션 체크
         //퍼미션체크 마시멜로 이상만 체크
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -88,6 +75,18 @@ public class MapView extends Activity {
         }
         else{
         }
+
+        //getmap
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+                .getMap();
+
+        //초기 마커표시
+        //Marker pknu = map.addMarker(new MarkerOptions().position(PKNU).title("PKNU"));
+
+
+        //초기 위치
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(PKNU, 15));
+
 
         //현재 위치로 가는 버튼 표시
         map.setMyLocationEnabled(true);
