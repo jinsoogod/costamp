@@ -3,6 +3,38 @@
 
 
 apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.hanium.costamp"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        // Enabling multidex support.
+        multiDexEnabled true
+    }
+    dexOptions{
+        javaMaxHeapSize"4g"
+        preDexLibraries = false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -32,31 +64,4 @@ dependencies {
 }
 //구글 서비스를 사용하기위해 필요
 apply plugin: 'com.google.gms.google-services'
-
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.0"
-
-    defaultConfig {
-        applicationId "com.hanium.costamp"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-
-        // Enabling multidex support.
-        multiDexEnabled true
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-repositories {
-    mavenCentral()
-}
 
