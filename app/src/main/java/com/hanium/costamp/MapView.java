@@ -45,7 +45,8 @@ public class MapView extends Activity {
     private GoogleMap map;
     //direction api를 사용하기위한 인터넷 server Key
     //String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilxxxxxxxxx";
-    String serverKey ="AIzaSyC5atU8_OZIE9Bkf5q0g6VKCXOhrOQ1HPw";
+    //String serverKey ="AIzaSyC5atU8_OZIE9Bkf5q0g6VKCXOhrOQ1HPw";
+    String serverKey ="AIzaSyBkrnK1sUgkaAIurp5xuebZ-HuKsJff3nc";
     //origin
     LatLng origin = new LatLng(35.1338149,129.1015348); //pknu
     //destinaion
@@ -185,5 +186,3 @@ public class MapView extends Activity {
     }
 
 }
-
-
