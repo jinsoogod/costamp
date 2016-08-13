@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Relaitve1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="onClick"
-    android:orientation="vertical"
+    android:background="@drawable/bg_login"
     tools:context=".activity.EmailJoinActivity">
 
-    <!--    <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp"
-            android:src="@drawable/test_image" />-->
-
-
+    <ImageView
+        android:layout_width="298.67dp"
+        android:layout_height="276.67dp" />
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_EnterEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -30,66 +20,39 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/et_EnterPassWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/et_EnterEmail"
         android:layout_centerHorizontal="true"
         android:ems="13"
         android:hint="Password"
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/et_EnterRePassWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/et_EnterPassWord"
         android:layout_centerHorizontal="true"
         android:ems="13"
         android:hint="Confirm Password "
         android:inputType="textPassword" />
 
-
-
-    <RadioGroup
-        android:id="@+id/radioGroupGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText3"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radioM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/radioW"
-            android:checked="true"
-            android:text="male" />
-
-        <RadioButton
-            android:id="@+id/radioW"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="female" />
-
-    </RadioGroup>
-
-
-    <Spinner
-        android:id="@+id/spinnerAge"
+    <EditText
+        android:id="@+id/et_EnterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroupGender"
+        android:layout_below="@+id/et_EnterPassWord"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
-
+        android:ems="13"
+        android:hint="Confirm Password "
+        android:inputType="textPassword" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/spinnerAge"
+        android:layout_below="@+id/et_EnterRePassWord"
         android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
@@ -110,5 +73,4 @@
             android:text="Cancel" />
 
     </LinearLayout>
-
 </RelativeLayout>

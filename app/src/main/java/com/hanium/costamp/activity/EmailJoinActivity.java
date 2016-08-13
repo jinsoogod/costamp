@@ -1,10 +1,17 @@
 package com.hanium.costamp.activity;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v4.view.KeyEventCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -14,67 +21,88 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.hanium.costamp.LoginAddInfoActivity;
 import com.hanium.costamp.Main1Activity;
 import com.hanium.costamp.R;
+import com.hanium.costamp.module.EmailSQLiteHandler;
+import com.hanium.costamp.module.EmailSessionManager;
 
 import java.util.ArrayList;
 
 // E-mail로 회원 가입 화면
-// 최종 수정자 : 표영은, 최종 수정 날짜 : 20160712 01:20
+// 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160813 14:30
 
-public class EmailJoinActivity extends AppCompatActivity {
-    EditText mEditEmail;
-    EditText mEditPassword;
-    EditText mEditRePassword;
-    RadioGroup mRadioGender;
-    Spinner mSpinner1;
-    ArrayList<String> mArGeneral;
+public class EmailJoinActivity extends Activity
+{
+    // 로그캣 체크를 위한 태그값 설정
+    private static final String TAG = EmailJoinActivity.class.getSimpleName();
+
+    // 추가정보 입력 양식 관련 뷰 선언
+    private EditText et_EnterEmail;
+    private EditText et_EnterPassWord;
+    private EditText et_EnterRePassWord;
+    private EditText et_EnterName;
+
+    // 회원 DB 송수신 관련
+    private ProgressDialog loadingDialog;
+    private EmailSessionManager emailSessionManager;
+    private EmailSQLiteHandler emailSQLiteHandler;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.email_join);
 
-        //입력 정보를 각각 멤버변수에 저장
-        mEditEmail = (EditText) findViewById(R.id.editText);
-        mEditPassword = (EditText) findViewById(R.id.editText2);
-        mEditRePassword = (EditText) findViewById(R.id.editText3);
-        mRadioGender = (RadioGroup) findViewById(R.id.radioGroupGender);
-        mSpinner1 = (Spinner) findViewById(R.id.spinnerAge);
-        initSpinner();
+        // 추가정보 입력 양식 관련 뷰 선언 및 저장
+        et_EnterEmail = (EditText) findViewById(R.id.et_EnterEmail); // 이메일 입력
+        et_EnterPassWord = (EditText) findViewById(R.id.et_EnterPassWord); // 패스워드입력
+        et_EnterRePassWord = (EditText) findViewById(R.id.et_EnterRePassWord); // 패스워드 재입력
+        et_EnterName = (EditText) findViewById(R.id.et_EnterName); // 이름 입력
 
+        // 진행상황 표시 부분
+        loadingDialog = new ProgressDialog(this); // 자기참조
+        loadingDialog.setCancelable(false);
+
+        // 세션 매니저 선언
+        emailSessionManager = new EmailSessionManager(getApplicationContext());
+
+        // SQLite Database Handler 선언
+        emailSQLiteHandler = new EmailSQLiteHandler(getApplicationContext());
+
+        // 유저가 이미 로그인 했는지 안되었는지 파악
+        if (emailSessionManager.isLoggedIn())
+        {
+            // 유저가 이미 로그인 한 상황이면 메인 액티비티로 이동함.
+            Intent intent = new Intent(EmailJoinActivity.this, Main1Activity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
-
-    public void initSpinner() {
-        String[] strTextList = {"10대 이하", "20대", "30대", "40대",
-                "50대", "60대 이상"};
-        // ArrayList 배열 객체 생성하고 6개의 텍스트 데이터를 입력
-        mArGeneral = new ArrayList<String>();
-        for (int i = 0; i < 6; i++)
-            mArGeneral.add(strTextList[i]);
-
-        // 어댑터 객체를 생성하고 ArrayList 를 지정
-        ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, mArGeneral);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
-        // ListView 위젯의 핸들을 구해서 멤버변수에 저장
-        mSpinner1 = (Spinner) findViewById(R.id.spinnerAge);
-        // ListView 에 어댑터를 지정
-        mSpinner1.setAdapter(adapter);
-
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        switch (keyCode)
+        {
+            case KeyEvent.KEYCODE_BACK:
+                Intent JoinToLogin = new Intent(EmailJoinActivity.this, LoginActivity.class);
+                startActivity(JoinToLogin);
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 
+    /*
     public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.submit_button:
-                String str = mEditEmail.getText().toString();
-                String strpw = mEditPassword.getText().toString();
+                // String str = mEditEmail.getText().toString();
+                // String strpw = mEditPassword.getText().toString();
                 String strpw2 = mEditRePassword.getText().toString();
                 RadioButton strrd = (RadioButton) findViewById(mRadioGender.getCheckedRadioButtonId());
                 String strrd2 = strrd.getText().toString();
@@ -114,6 +142,5 @@ public class EmailJoinActivity extends AppCompatActivity {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(relativeLayout.getWindowToken(), 0);
         }
-
-    }
+    }*/
 }
