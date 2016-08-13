@@ -11,15 +11,15 @@ public class ListViewData2 {
     public String info1;
     public String info2;
     public String info3;
-    public String info4;
 
 
 
-    ListViewData2(String info1, String info2, String info3, String info4, Bitmap image) {
+
+    ListViewData2(String info1, String info2, String info3, Bitmap image) {
         this.image = image;
         this.info1 = info1;
         this.info2 = info2;
         this.info3 = info3;
-        this.info4 = info4;
+
     }
 }
