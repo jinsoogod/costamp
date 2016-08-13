@@ -55,7 +55,7 @@ public class CourseActivity extends AppCompatActivity {
         test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.hanrasan));
         test2 = new ListViewData("우도", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.woodo));
         test3 = new ListViewData("협재 해수욕장", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.hyeopjae));
-        test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.olle));
+//        test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.olle));
         test5 = new ListViewData("관음사", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
         test6 = new ListViewData("바다바다", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.badabada));
 
@@ -67,7 +67,7 @@ public class CourseActivity extends AppCompatActivity {
         travel_info_list.add(test1);
         travel_info_list.add(test2);
         travel_info_list.add(test3);
-        travel_info_list.add(test4);
+  //      travel_info_list.add(test4);
         travel_info_list.add(test5);
         travel_info_list.add(test6);
 
