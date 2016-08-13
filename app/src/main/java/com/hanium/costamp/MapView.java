@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
@@ -39,45 +40,28 @@ public class MapView extends Activity {
 
     //direction Request button
     private Button btn_RequestDirection;
-    private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
 
 
-
-    static final LatLng PKNU = new LatLng(35.1338149,129.1015348);
+    static final LatLng PKNU = new LatLng(35.1338149, 129.1015348);
     private GoogleMap map;
     //direction api를 사용하기위한 인터넷 server Key
     //String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilxxxxxxxxx";
     //String serverKey ="AIzaSyC5atU8_OZIE9Bkf5q0g6VKCXOhrOQ1HPw";
-    String serverKey ="AIzaSyBkrnK1sUgkaAIurp5xuebZ-HuKsJff3nc";
+    String serverKey = "AIzaSyBkrnK1sUgkaAIurp5xuebZ-HuKsJff3nc";
     //origin
-    LatLng origin = new LatLng(35.1338149,129.1015348); //pknu
+    LatLng origin = new LatLng(35.1338149, 129.1015348); //pknu
     //destinaion
-    LatLng destination = new LatLng(35.1531863,129.1099112); //광안리해수욕장
-
+    LatLng destination = new LatLng(35.1531863, 129.1099112); //광안리해수욕장
 
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-
-            if(shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)){
-                Toast.makeText(this,"위치확인",Toast.LENGTH_SHORT).show();
-            }
-
-            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION},MY_PERMISSION_REQUEST_ACCESS_LOCATION);
-        }
-        else{
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view);
 
-
-
-        btn_RequestDirection = (Button)findViewById(R.id.btn_RequestDirection);
+        btn_RequestDirection = (Button) findViewById(R.id.btn_RequestDirection);
         //위치 찾기 퍼미션 체크
         //퍼미션체크 마시멜로 이상만 체크
 
@@ -94,6 +78,16 @@ public class MapView extends Activity {
 
 
         //현재 위치로 가는 버튼 표시
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         map.setMyLocationEnabled(true);
 
         MyLocation.LocationResult locationResult = new MyLocation.LocationResult() {
@@ -167,26 +161,5 @@ public class MapView extends Activity {
     }
 
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSION_REQUEST_ACCESS_LOCATION:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-
-
-                    // permission was granted, yay! do the
-                    // calendar task you need to do.
-
-                } else {
-
-                    Log.d("permissioncheck", "Permission always deny");
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                break;
-        }
-    }
 
 }
