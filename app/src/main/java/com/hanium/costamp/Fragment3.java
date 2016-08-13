@@ -26,7 +26,8 @@ public class Fragment3 extends Fragment {
     ListView listView2;
     ArrayList<ListViewData2> ranking_info_list;
     ListViewAdapter2 rankingAdapter;
-    ListViewData2 testa;
+    ListViewData2 testa ,testb, testc, testd, teste;
+
 
 
     View view;
@@ -45,10 +46,20 @@ public class Fragment3 extends Fragment {
 
         listView2 = (ListView) view.findViewById(R.id.listView2);
 
-        testa = new ListViewData2("UserName1", "가나다", "라마바", "아자차", BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+        testa = new ListViewData2("Skymemorize777", "제주도 여행", "#제주도 #엑티비티", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_1));
+        testb = new ListViewData2("pinkgonju","제주도 여행", "#제주도 #힐링", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_2));
+        testc = new ListViewData2("jinsugod12", "제주도 여행", "#편안한 #안전한", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_3));
+        testd = new ListViewData2("godjujin", "제주도 여행", "#먹방 #제주도올레길", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_4));
+        teste = new ListViewData2("younget02", "제주도 여행", "#제주도 #헬", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_5));
 
         ranking_info_list = new ArrayList<ListViewData2>();
+
+
         ranking_info_list.add(testa);
+        ranking_info_list.add(testb);
+        ranking_info_list.add(testc);
+        ranking_info_list.add(testd);
+        ranking_info_list.add(teste);
 
 
 
@@ -98,4 +109,3 @@ public class Fragment3 extends Fragment {
 
 
 }
-

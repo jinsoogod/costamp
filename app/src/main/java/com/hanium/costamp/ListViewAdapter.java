@@ -56,6 +56,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
 
+        notifyDataSetChanged();
 //                final int pos = position;
 
         // TODO Auto-generated method stub

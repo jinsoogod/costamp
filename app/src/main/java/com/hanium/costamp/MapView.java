@@ -1,9 +1,11 @@
 package com.hanium.costamp;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -54,18 +56,12 @@ public class MapView extends Activity {
 
 
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_view);
 
-        btn_RequestDirection = (Button)findViewById(R.id.btn_RequestDirection);
-        //위치 찾기 퍼미션 체크
-        //퍼미션체크 마시멜로 이상만 체크
-        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED ||
-                checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 
             if(shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)){
                 Toast.makeText(this,"위치확인",Toast.LENGTH_SHORT).show();
@@ -75,6 +71,15 @@ public class MapView extends Activity {
         }
         else{
         }
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map_view);
+
+
+
+        btn_RequestDirection = (Button)findViewById(R.id.btn_RequestDirection);
+        //위치 찾기 퍼미션 체크
+        //퍼미션체크 마시멜로 이상만 체크
 
         //getmap
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))

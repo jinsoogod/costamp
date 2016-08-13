@@ -51,6 +51,8 @@ public class ListViewAdapter2 extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
 
+        notifyDataSetChanged();
+        
         if (convertView == null) {
             convertView = inflater.inflate(this.layout, parent, false);
         } else {
@@ -58,14 +60,12 @@ public class ListViewAdapter2 extends BaseAdapter {
             TextView ranking_info1= (TextView) convertView.findViewById(R.id.tv_rankinginfo1);
             TextView ranking_info2= (TextView) convertView.findViewById(R.id.tv_rankinginfo2);
             TextView ranking_info3= (TextView) convertView.findViewById(R.id.tv_rankinginfo3);
-            TextView ranking_info4= (TextView) convertView.findViewById(R.id.tv_rankinginfo4);
 
 
-           user_image.setImageBitmap(data.get(position).image);
+            user_image.setImageBitmap(data.get(position).image);
             ranking_info1.setText(data.get(position).info1);
             ranking_info2.setText(data.get(position).info2);
             ranking_info3.setText(data.get(position).info3);
-            ranking_info4.setText(data.get(position).info4);
 
         }
 
