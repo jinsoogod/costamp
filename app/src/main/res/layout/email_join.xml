@@ -8,7 +8,18 @@
 
     <ImageView
         android:layout_width="298.67dp"
-        android:layout_height="276.67dp" />
+        android:layout_height="276.67dp"
+        android:layout_marginLeft="20.33dp"
+        android:layout_marginTop="130.33dp"
+        android:src="@drawable/bg_login_enter_info" />
+
+    <ImageView
+        android:layout_marginLeft="59.67dp"
+        android:layout_marginTop="180.67dp"
+        android:layout_width="76.67dp"
+        android:layout_height="53.33dp"
+        android:src="@drawable/icn_login_email"/>
+
     <EditText
         android:id="@+id/et_EnterEmail"
         android:layout_width="wrap_content"
@@ -49,28 +60,12 @@
         android:hint="Confirm Password "
         android:inputType="textPassword" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/et_EnterRePassWord"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:text="Submit" />
 
-        <Button
-            android:id="@+id/submit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:text="Submit" />
-
-        <Button
-            android:id="@+id/cancel_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:text="Cancel" />
-
-    </LinearLayout>
 </RelativeLayout>
