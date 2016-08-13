@@ -25,7 +25,6 @@ public class SplashActivity extends Activity
     boolean isInternetWiFi = false; // WiFi망 상태 값 저장
     boolean isInternetMobile = false; // 3G망 상태 값 저장
 
-    private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -125,39 +124,5 @@ public class SplashActivity extends Activity
         }
 
 
-        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-
-            if(shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)){
-                Toast.makeText(this,"위치확인",Toast.LENGTH_SHORT).show();
-            }
-
-            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION},MY_PERMISSION_REQUEST_ACCESS_LOCATION);
-        }
-        else{
-        }
-
-
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSION_REQUEST_ACCESS_LOCATION:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-
-
-                    // permission was granted, yay! do the
-                    // calendar task you need to do.
-
-                } else {
-
-                    Log.d("permissioncheck", "Permission always deny");
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                break;
-        }
     }
 }

@@ -41,6 +41,7 @@ public class MapView extends Activity {
     //direction Request button
     private Button btn_RequestDirection;
 
+    private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
 
     static final LatLng PKNU = new LatLng(35.1338149, 129.1015348);
     private GoogleMap map;
@@ -72,7 +73,17 @@ public class MapView extends Activity {
         //초기 마커표시
         //Marker pknu = map.addMarker(new MarkerOptions().position(PKNU).title("PKNU"));
 
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 
+            if(shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)){
+                Toast.makeText(this,"위치확인",Toast.LENGTH_SHORT).show();
+            }
+
+            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION},MY_PERMISSION_REQUEST_ACCESS_LOCATION);
+        }
+        else{
+        }
         //초기 위치
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(PKNU, 15));
 
@@ -161,5 +172,26 @@ public class MapView extends Activity {
     }
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSION_REQUEST_ACCESS_LOCATION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+
+                    // permission was granted, yay! do the
+                    // calendar task you need to do.
+
+                } else {
+
+                    Log.d("permissioncheck", "Permission always deny");
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                break;
+        }
+    }
 
 }
