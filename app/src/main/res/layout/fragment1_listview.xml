@@ -32,7 +32,7 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/tv_courseinfo1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -67,7 +67,8 @@
                     android:layout_height="60dp"
                     android:background="@drawable/course_add"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/btn_like" />
             </RelativeLayout>
 
         </LinearLayout>
