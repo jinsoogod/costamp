@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants">
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,11 +25,13 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:orientation="horizontal">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_courseinfo1"
@@ -37,37 +39,39 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Large Text"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#111111" />
+                    android:textColor="#111111"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tv_courseinfo2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Medium Text"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#111111" />
+                    android:textColor="#111111"
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tv_courseinfo3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Medium Text"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#111111" />
+                    android:textColor="#111111"
+                    android:textSize="12dp" />
 
             </LinearLayout>
+
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/course_add"
-                    android:layout_centerVertical="true"
+                    android:id="@+id/btn_like"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_centerHorizontal="true"
-                    android:id="@+id/btn_like" />
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/course_add" />
             </RelativeLayout>
 
         </LinearLayout>

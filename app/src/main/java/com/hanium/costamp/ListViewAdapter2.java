@@ -62,7 +62,7 @@ public class ListViewAdapter2 extends BaseAdapter {
             TextView ranking_info3= (TextView) convertView.findViewById(R.id.tv_rankinginfo3);
 
 
-            user_image.setImageBitmap(data.get(position).image);
+            user_image.setImageDrawable(data.get(position).image);
             ranking_info1.setText(data.get(position).info1);
             ranking_info2.setText(data.get(position).info2);
             ranking_info3.setText(data.get(position).info3);

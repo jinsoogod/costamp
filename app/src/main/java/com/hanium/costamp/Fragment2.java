@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 //메인화면에서 COURSE탭 Fragment
 public class Fragment2 extends Fragment {
     Button mBtn_tmp;
+    ImageView mIv_map;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,9 @@ public class Fragment2 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment2, null);
         mBtn_tmp = (Button) view.findViewById(R.id.btn_tmp);
+        mIv_map = (ImageView)view.findViewById(R.id.iv_map) ;
+
+        mIv_map.setImageResource(R.drawable.map);
 
         mBtn_tmp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +41,10 @@ public class Fragment2 extends Fragment {
                 startActivity(intent);
             }
         });
-        return  view;
+
+        return view;
     }
+
+
+
 }

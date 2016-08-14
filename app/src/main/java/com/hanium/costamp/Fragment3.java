@@ -5,7 +5,9 @@ package com.hanium.costamp;
  */
 
 import android.app.Fragment;
-import android.graphics.BitmapFactory;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,22 +48,19 @@ public class Fragment3 extends Fragment {
 
         listView2 = (ListView) view.findViewById(R.id.listView2);
 
-        testa = new ListViewData2("Skymemorize777", "제주도 여행", "#제주도 #엑티비티", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_1));
-        testb = new ListViewData2("pinkgonju","제주도 여행", "#제주도 #힐링", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_2));
-        testc = new ListViewData2("jinsugod12", "제주도 여행", "#편안한 #안전한", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_3));
-        testd = new ListViewData2("godjujin", "제주도 여행", "#먹방 #제주도올레길", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_4));
-        teste = new ListViewData2("younget02", "제주도 여행", "#제주도 #헬", BitmapFactory.decodeResource(getResources(), R.drawable.ranking_profile_5));
+        testa = new ListViewData2("Skymemorize777", "제주도 여행", "#제주도 #엑티비티",getDrawableFromResource(getActivity(),R.drawable.ranking_profile_1));
+        testb = new ListViewData2("pinkgonju","제주도 여행", "#제주도 #힐링", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_2));
+        testc = new ListViewData2("jinsugod12", "제주도 여행", "#편안한 #안전한", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_3));
+        testd = new ListViewData2("godjujin", "제주도 여행", "#먹방 #제주도올레길", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_4));
+        teste = new ListViewData2("younget02", "제주도 여행", "#제주도 #헬", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_5));
 
         ranking_info_list = new ArrayList<ListViewData2>();
-
 
         ranking_info_list.add(testa);
         ranking_info_list.add(testb);
         ranking_info_list.add(testc);
         ranking_info_list.add(testd);
         ranking_info_list.add(teste);
-
-
 
         rankingAdapter = new ListViewAdapter2(getActivity(), R.layout.fragment3_listview, ranking_info_list);
         listView2.setAdapter(rankingAdapter);
@@ -107,5 +106,13 @@ public class Fragment3 extends Fragment {
         mSpinner5.setAdapter(adapter);
     }
 
+
+    public static Drawable getDrawableFromResource(Context context, int id) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return context.getDrawable(id);
+        } else {
+            return context.getResources().getDrawable(id);
+        }
+    }
 
 }
