@@ -27,7 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/adpager"
-
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 

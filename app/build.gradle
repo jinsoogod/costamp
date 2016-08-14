@@ -20,8 +20,10 @@ android {
     }
     dexOptions{
         javaMaxHeapSize"4g"
+        jumboMode = true
         preDexLibraries = false
     }
+
 
     buildTypes {
         release {
