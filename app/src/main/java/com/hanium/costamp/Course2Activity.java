@@ -1,17 +1,27 @@
 package com.hanium.costamp;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Course2Activity extends AppCompatActivity {
+
+    private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
     ArrayList<costamp_listData> costamp_list;
     costamp_listAdapter costampAdapter;
     ListView listView;
@@ -22,6 +32,8 @@ public class Course2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course2);
+
+        Snackbar.make(getWindow().getDecorView().getRootView(),"코스가 제작되었습니다.",Snackbar.LENGTH_LONG).show();
         listView = (ListView) findViewById(R.id.lv_costamp);
 
 
@@ -55,12 +67,50 @@ public class Course2Activity extends AppCompatActivity {
         listView.setAdapter(costampAdapter);
 
         btn_CourseView.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+
+                //마시멜로이상 퍼미션체크
+                if(ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                        checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+
+                    if(shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)){
+                        Snackbar.make(btn_CourseView,"위치확인",Snackbar.LENGTH_SHORT).show();
+                    }
+
+                    requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION},MY_PERMISSION_REQUEST_ACCESS_LOCATION);
+                }
+                else{
+                }
+
+
                 Intent intent = new Intent(getApplicationContext(),costamp_mapView.class);
                 startActivity(intent);
             }
         });
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSION_REQUEST_ACCESS_LOCATION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+
+                    // permission was granted, yay! do the
+                    // calendar task you need to do.
+
+                } else {
+
+                    Log.d("permissioncheck", "Permission always deny");
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                break;
+        }
     }
 }
