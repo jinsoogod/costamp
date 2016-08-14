@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 
 //메인화면에서 COURSE탭 Fragment
 public class Fragment2 extends Fragment {
@@ -32,7 +34,12 @@ public class Fragment2 extends Fragment {
         mBtn_tmp = (Button) view.findViewById(R.id.btn_tmp);
         mIv_map = (ImageView)view.findViewById(R.id.iv_map) ;
 
-        mIv_map.setImageResource(R.drawable.map);
+        int resourceId = R.drawable.map;
+
+        Glide.with(this)
+                .load(resourceId)
+                .into(mIv_map);
+
 
         mBtn_tmp.setOnClickListener(new View.OnClickListener() {
             @Override
