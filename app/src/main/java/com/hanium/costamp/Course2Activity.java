@@ -16,7 +16,7 @@ public class Course2Activity extends AppCompatActivity {
     costamp_listAdapter costampAdapter;
     ListView listView;
     costamp_listData test1, test2, test3, test4, test5, test6;
-    Button btn_CourseView = (Button)findViewById(R.id.btn_CourseView);
+    Button btn_CourseView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class Course2Activity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lv_costamp);
 
 
+        btn_CourseView = (Button)findViewById(R.id.btn_CourseView);
         // 좋아요 된 애들만 출력해주기
         test1 = new costamp_listData("바다바다", "제주시 노형동", "'가장 핫한 음식점'",R.drawable.badabada,new LatLng(33.4815972,126.4706638));
         test2 = new costamp_listData("협재 해수욕장", "제주시 한림읍 협재리", "'에메랄드빛 바다'", R.drawable.hyeopjae,new LatLng(33.3941308,126.2222184));
