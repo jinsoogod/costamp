@@ -58,10 +58,10 @@ public class Fragment1 extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.listView);
 
-        test1 = new ListViewData("A여행지", "가나라 정보2", "정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
-        test2 = new ListViewData("B여행지", "아앙정보2", "정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage2));
-        test3 = new ListViewData("C여행지", "아아으 정보2", "정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
-        test4 = new ListViewData("D여행지", "123정보2", " 정보3", false, BitmapFactory.decodeResource(getResources(), R.drawable.testimage2));
+        test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true, getResources().getDrawable(R.drawable.hanrasan));
+        test2 = new ListViewData("우도", "여행지 정보2", "여행지 정보3", true,getResources().getDrawable(R.drawable.woodo));
+        test3 = new ListViewData("협재 해수욕장", "여행지 정보2", "여행지 정보3", true,getResources().getDrawable(R.drawable.hyeopjae));
+        test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, getResources().getDrawable(R.drawable.olle));
 
         course_info_list = new ArrayList<ListViewData>();
         course_info_list.add(test1);
@@ -77,11 +77,11 @@ public class Fragment1 extends Fragment {
         listView.setAdapter(courseAdapter);
         header = inflater.inflate(R.layout.fragment1,null,false);
         listView.addHeaderView(header);
-        listView.setOnItemClickListener(mItemClickListener);
+        //listView.setOnItemClickListener(mItemClickListener);
 
         return view;
    }
-
+/*
     public AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,7 +104,7 @@ public class Fragment1 extends Fragment {
 
         }
     };
-
+*/
 
     //지역별로 사진을 볼 수 있도록 하는 Spinner2를 초기화하는 메소드
     public void initSpinner11() {

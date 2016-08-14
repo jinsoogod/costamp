@@ -1,7 +1,10 @@
 package com.hanium.costamp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -54,12 +57,12 @@ public class CourseActivity extends AppCompatActivity {
 
 
         // 좋아요 된 애들만 출력해주기
-        test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true, Glide.with(this).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(imageView));
-        test2 = new ListViewData("우도", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.woodo));
-        test3 = new ListViewData("협재 해수욕장", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.hyeopjae));
-        test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.olle));
-        test5 = new ListViewData("관음사", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
-        test6 = new ListViewData("바다바다", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.badabada));
+        test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true,getDrawableFromResource(this,R.drawable.hanrasan));
+        test2 = new ListViewData("우도", "여행지 정보2", "여행지 정보3", true,getDrawableFromResource(this,R.drawable.woodo));
+        test3 = new ListViewData("협재 해수욕장", "여행지 정보2", "여행지 정보3", true,getDrawableFromResource(this,R.drawable.hyeopjae));
+        test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, getDrawableFromResource(this,R.drawable.olle));
+        test5 = new ListViewData("관음사", "여행지 정보2", "여행지 정보3", true, getDrawableFromResource(this,R.drawable.hanrasan));
+        test6 = new ListViewData("바다바다", "여행지 정보2", "여행지 정보3", true, getDrawableFromResource(this,R.drawable.badabada));
 
          /*
         한라산/@33.3616711,126.5269779
@@ -84,6 +87,12 @@ public class CourseActivity extends AppCompatActivity {
 
 
     }
-
+    public static Drawable getDrawableFromResource(Context context, int id) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return context.getDrawable(id);
+        } else {
+            return context.getResources().getDrawable(id);
+        }
+    }
 
 }
