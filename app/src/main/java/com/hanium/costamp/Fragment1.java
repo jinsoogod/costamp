@@ -58,11 +58,10 @@ public class Fragment1 extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.listView);
 
-        test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true, getResources().getDrawable(R.drawable.hanrasan));
-        test2 = new ListViewData("우도", "여행지 정보2", "여행지 정보3", true,getResources().getDrawable(R.drawable.woodo));
-        test3 = new ListViewData("협재 해수욕장", "여행지 정보2", "여행지 정보3", true,getResources().getDrawable(R.drawable.hyeopjae));
-        test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, getResources().getDrawable(R.drawable.olle));
-
+        test1 = new ListViewData("한라산", "제주시 아라동", "'한국에서 가장 높은산'", true,R.drawable.hanrasan);
+        test2 = new ListViewData("우도", "제주시 우도면 연평리", "'한국의 사이판'", true, R.drawable.woodo);
+        test3 = new ListViewData("협재 해수욕장", "제주시 한림읍 협재리", "'에메랄드빛 바다'", true, R.drawable.hyeopjae);
+        test4 = new ListViewData("올레길", "서귀포시 남원읍 남원리", "'한국에서 가장 높은산'", true, R.drawable.olle);
         course_info_list = new ArrayList<ListViewData>();
         course_info_list.add(test1);
         course_info_list.add(test2);

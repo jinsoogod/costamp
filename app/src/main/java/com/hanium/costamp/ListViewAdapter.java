@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 /**
@@ -69,7 +71,10 @@ public class ListViewAdapter extends BaseAdapter {
             TextView course_info2 = (TextView) convertView.findViewById(R.id.tv_courseinfo2);
             TextView course_info3 = (TextView) convertView.findViewById(R.id.tv_courseinfo3);
 
-            course_image.setImageDrawable(data.get(position).image);
+
+            Glide.with(mContext)
+                    .load(data.get(position).image)
+                    .into(course_image);
             course_info1.setText(data.get(position).info1);
             course_info2.setText(data.get(position).info2);
             course_info3.setText(data.get(position).info3);

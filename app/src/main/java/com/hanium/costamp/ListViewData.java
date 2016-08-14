@@ -8,14 +8,14 @@ import android.graphics.drawable.Drawable;
  */
 public class ListViewData {
 
-    public Drawable image;
+    public int image;
     public String info1;
     public String info2;
     public String info3;
     public boolean like;
 
-    ListViewData(String info1, String info2, String info3, Boolean like, Drawable drawable) {
-        this.image = drawable;
+    ListViewData(String info1, String info2, String info3, Boolean like, int image) {
+        this.image = image;
         this.info1 = info1;
         this.info2 = info2;
         this.info3 = info3;

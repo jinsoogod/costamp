@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 /**
@@ -62,7 +64,9 @@ public class ListViewAdapter2 extends BaseAdapter {
             TextView ranking_info3= (TextView) convertView.findViewById(R.id.tv_rankinginfo3);
 
 
-            user_image.setImageDrawable(data.get(position).image);
+            Glide.with(mContext)
+                    .load(data.get(position).image)
+                    .into(user_image);
             ranking_info1.setText(data.get(position).info1);
             ranking_info2.setText(data.get(position).info2);
             ranking_info3.setText(data.get(position).info3);

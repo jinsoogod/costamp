@@ -48,11 +48,11 @@ public class Fragment3 extends Fragment {
 
         listView2 = (ListView) view.findViewById(R.id.listView2);
 
-        testa = new ListViewData2("Skymemorize777", "제주도 여행", "#제주도 #엑티비티",getDrawableFromResource(getActivity(),R.drawable.ranking_profile_1));
-        testb = new ListViewData2("pinkgonju","제주도 여행", "#제주도 #힐링", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_2));
-        testc = new ListViewData2("jinsugod12", "제주도 여행", "#편안한 #안전한", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_3));
-        testd = new ListViewData2("godjujin", "제주도 여행", "#먹방 #제주도올레길", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_4));
-        teste = new ListViewData2("younget02", "제주도 여행", "#제주도 #헬", getDrawableFromResource(getActivity(),R.drawable.ranking_profile_5));
+        testa = new ListViewData2("Skymemorize777", "제주도 여행", "#제주도 #엑티비티",R.drawable.ranking_profile_1);
+        testb = new ListViewData2("pinkgonju","제주도 여행", "#제주도 #힐링", R.drawable.ranking_profile_2);
+        testc = new ListViewData2("jinsugod12", "제주도 여행", "#편안한 #안전한", R.drawable.ranking_profile_3);
+        testd = new ListViewData2("godjujin", "제주도 여행", "#먹방 #제주도올레길", R.drawable.ranking_profile_4);
+        teste = new ListViewData2("younget02", "제주도 여행", "#제주도 #헬", R.drawable.ranking_profile_5);
 
         ranking_info_list = new ArrayList<ListViewData2>();
 

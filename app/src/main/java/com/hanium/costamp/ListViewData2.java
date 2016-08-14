@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
  */
 public class ListViewData2 {
 
-    public Drawable image;
+    public int image;
     public String info1;
     public String info2;
     public String info3;
@@ -15,7 +15,7 @@ public class ListViewData2 {
 
 
 
-    ListViewData2(String info1, String info2, String info3,  Drawable image) {
+    ListViewData2(String info1, String info2, String info3,  int image) {
         this.image = image;
         this.info1 = info1;
         this.info2 = info2;
