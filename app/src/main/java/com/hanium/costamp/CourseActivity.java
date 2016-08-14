@@ -9,6 +9,8 @@ import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class CourseActivity extends AppCompatActivity {
@@ -52,18 +54,23 @@ public class CourseActivity extends AppCompatActivity {
 
 
         // 좋아요 된 애들만 출력해주기
-        test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.hanrasan));
+        test1 = new ListViewData("한라산", "여행지 정보2", "여행지 정보3", true, Glide.with(this).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(imageView));
         test2 = new ListViewData("우도", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.woodo));
         test3 = new ListViewData("협재 해수욕장", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.hyeopjae));
         test4 = new ListViewData("올레길", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.olle));
         test5 = new ListViewData("관음사", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.testimage1));
         test6 = new ListViewData("바다바다", "여행지 정보2", "여행지 정보3", true, BitmapFactory.decodeResource(getResources(), R.drawable.badabada));
 
-
-
+         /*
+        한라산/@33.3616711,126.5269779
+        우도/@33.4990766,126.9384237
+        올레길/@33.2781089,126.7157667
+        제주도 바다바다/@33.4815972,126.4706638
+        관음사/@33.4302786,126.5300466
+        협재 해수욕장 33.3941308,126.2222184
+         */
 
         travel_info_list = new ArrayList<ListViewData>();
-        travel_info_list.clear();
         travel_info_list.add(test1);
         travel_info_list.add(test2);
         travel_info_list.add(test3);
