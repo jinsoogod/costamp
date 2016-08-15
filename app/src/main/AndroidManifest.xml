@@ -67,7 +67,7 @@
 
         <activity
             android:name=".activity.SplashActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -76,9 +76,10 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop"/>
         <activity
             android:name="com.facebook.FacebookActivity"
+            android:launchMode="singleTop"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -90,19 +91,19 @@
 
         <activity
             android:name=".activity.EmailJoinActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop"/>
         <activity
             android:name=".LoginAddInfoActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".Main1Activity"
             android:label="@string/title_activity_main1"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- Dialog Theme -->
         <activity
             android:name=".picture_transmission_dialog"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTop"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Test" />
 
@@ -155,23 +156,25 @@
         </service>
         <!-- 여기까지 -->
 
-        <activity android:name=".picture_transmission" />
+        <activity android:name=".picture_transmission"
+            android:launchMode="singleTop"/>
         <activity
             android:name=".CourseActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".Course2Activity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".CourseInfoActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".MapView"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".costamp_mapView"
-            android:launchMode="singleInstance" />
-        <activity android:name=".costamp_direction"></activity>
+            android:launchMode="singleTop" />
+        <activity android:name=".costamp_direction"
+            android:launchMode="singleTop"></activity>
     </application>
 
 </manifest>
