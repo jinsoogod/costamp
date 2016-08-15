@@ -2,15 +2,11 @@ package com.hanium.costamp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Location;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,7 +17,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.gson.JsonDeserializer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,6 +25,7 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
 
     costamp_listAdapter costampAdapter;
     ListView listView;
+    Button btn_courseDirectionRequest;
 
     private GoogleMap googleMap;
     private PolylineOptions polylineOptions;
@@ -82,6 +78,16 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
                 .findFragmentById(R.id.course_map);
         mapFragment.getMapAsync(this);
 
+
+        btn_courseDirectionRequest = (Button)findViewById(R.id.btn_costamp_RequestDirection);
+        btn_courseDirectionRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),costamp_direction.class);
+                startActivity(intent);
+
+            }
+        });
             }
 
 }
