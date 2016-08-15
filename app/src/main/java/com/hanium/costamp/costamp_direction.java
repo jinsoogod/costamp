@@ -44,7 +44,7 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
     public void onMapReady(final GoogleMap map) {
 
         googleMap = map;
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom( Course2Activity.test1.latLng, 15));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Course2Activity.test1.latLng, 15));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
         origin = Course2Activity.test1.latLng;
