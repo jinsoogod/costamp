@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/EmailJoinLayout"
     android:background="@drawable/bg_login"
     tools:context=".activity.EmailJoinActivity">
 
@@ -13,59 +14,85 @@
         android:layout_marginTop="130.33dp"
         android:src="@drawable/bg_login_enter_info" />
 
+    <Button
+        android:id="@+id/btn_LoginClose"
+        android:layout_width="24.67dp"
+        android:layout_height="24.67dp"
+        android:layout_marginLeft="301.33dp"
+        android:layout_marginTop="118dp"
+        android:background="@drawable/icn_login_close" />
+
     <ImageView
+        android:layout_width="17dp"
+        android:layout_height="11.67dp"
         android:layout_marginLeft="59.67dp"
         android:layout_marginTop="180.67dp"
-        android:layout_width="76.67dp"
-        android:layout_height="53.33dp"
-        android:src="@drawable/icn_login_email"/>
+        android:src="@drawable/icn_login_email" />
 
     <EditText
         android:id="@+id/et_EnterEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="144dp"
-        android:ems="13"
+        android:layout_width="228.33dp"
+        android:layout_height="26.33dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="173.33dp"
+        android:background="@drawable/iv_login_enter_line"
+        android:ems="20"
         android:hint="E-mail"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:paddingLeft="30dip" />
+
+    <ImageView
+        android:layout_width="14dp"
+        android:layout_height="17.33dp"
+        android:layout_marginLeft="61.33dp"
+        android:layout_marginTop="219.33dp"
+        android:src="@drawable/icn_login_password" />
 
     <EditText
         android:id="@+id/et_EnterPassWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_EnterEmail"
-        android:layout_centerHorizontal="true"
+        android:layout_width="228.33dp"
+        android:layout_height="26.33dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="213.33dp"
+        android:background="@drawable/iv_login_enter_line"
         android:ems="13"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:paddingLeft="30dip" />
 
-    <EditText
-        android:id="@+id/et_EnterRePassWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_EnterPassWord"
-        android:layout_centerHorizontal="true"
-        android:ems="13"
-        android:hint="Confirm Password "
-        android:inputType="textPassword" />
+    <ImageView
+        android:layout_width="17dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="59.67dp"
+        android:layout_marginTop="264.67dp"
+        android:src="@drawable/icn_login_name" />
 
     <EditText
         android:id="@+id/et_EnterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_EnterPassWord"
-        android:layout_centerHorizontal="true"
+        android:layout_width="228.33dp"
+        android:layout_height="26.33dp"
+        android:layout_marginLeft="59.67dp"
+        android:layout_marginTop="257.33dp"
+        android:background="@drawable/iv_login_enter_line"
         android:ems="13"
-        android:hint="Confirm Password "
-        android:inputType="textPassword" />
+        android:hint="name "
+        android:inputType="text"
+        android:paddingLeft="30dip" />
 
     <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="onClick"
-        android:text="Submit" />
+        android:id="@+id/btn_LoginCamera"
+        android:layout_width="50.33dp"
+        android:layout_height="50.33dp"
+        android:layout_marginLeft="144.67dp"
+        android:layout_marginTop="302.67dp"
+        android:background="@drawable/icn_login_profile_camera" />
+
+    <Button
+        android:id="@+id/btn_LoginSubmit"
+        android:layout_width="65.33dp"
+        android:layout_height="65.33dp"
+        android:layout_marginLeft="137dp"
+        android:layout_marginTop="374dp"
+        android:background="@drawable/icn_login_ok" />
 
 </RelativeLayout>
