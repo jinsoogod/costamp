@@ -30,21 +30,27 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
 
 
     static final LatLng PKNU = new LatLng(35.1338149, 129.1015348);
-    private GoogleMap map;
     //direction api를 사용하기위한 인터넷 server Key
     //String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilxxxxxxxxx";
     //String serverKey ="AIzaSyC5atU8_OZIE9Bkf5q0g6VKCXOhrOQ1HPw";
     String serverKey = "AIzaSyBkrnK1sUgkaAIurp5xuebZ-HuKsJff3nc";
+    int i =0;
+    LatLng origin;
+    LatLng destination;
 
     private GoogleMap googleMap;
 
     @Override
     public void onMapReady(final GoogleMap map) {
+
         googleMap = map;
-
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom( Course2Activity.test1.latLng, 15));
-
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
+        origin = Course2Activity.test1.latLng;
+        destination = Course2Activity.test2.latLng;
+
+        requestDirection();
     }
 
 
@@ -52,24 +58,17 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_costamp_direction);
-        int i=0;
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.direction_map);
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.direction_map);
         mapFragment.getMapAsync(this);
-
-        requestDirection(Course2Activity.test1.latLng, Course2Activity.test2.latLng);
-
-
-
-
 
     }
 
 
 
     //길찾기요청
-    public void requestDirection(LatLng origin,LatLng destination) {
+    public void requestDirection() {
         Snackbar.make(getWindow().getDecorView().getRootView(), "Direction Requesting...", Snackbar.LENGTH_SHORT).show();
         GoogleDirection.withServerKey(serverKey)
                 .from(origin)
@@ -82,13 +81,13 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
                         if (direction.isOK()) {
                             ArrayList<LatLng> sectionPositionList = direction.getRouteList().get(0).getLegList().get(0).getSectionPoint();
                             for (LatLng position : sectionPositionList) {
-                                map.addMarker(new MarkerOptions().position(position));
+                                googleMap.addMarker(new MarkerOptions().position(position));
                             }
 
                             List<Step> stepList = direction.getRouteList().get(0).getLegList().get(0).getStepList();
                             ArrayList<PolylineOptions> polylineOptionList = DirectionConverter.createTransitPolyline(getApplicationContext(), stepList, 5, Color.RED, 3, Color.BLUE);
                             for (PolylineOptions polylineOption : polylineOptionList) {
-                                map.addPolyline(polylineOption);
+                                googleMap.addPolyline(polylineOption);
                             }
 
                             getWindow().getDecorView().getRootView().setVisibility(View.GONE);
