@@ -2,10 +2,12 @@ package com.hanium.costamp;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.Serializable;
+
 /**
  * Created by korea on 2016-08-14.
  */
-public class costamp_listData {
+public class costamp_listData implements Serializable {
 
     public int image;
     public String info1;

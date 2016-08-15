@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 public class Course2Activity extends AppCompatActivity {
 
     private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
-    ArrayList<costamp_listData> costamp_list;
+    static ArrayList<costamp_listData> costamp_list;
     costamp_listAdapter costampAdapter;
     ListView listView;
-    costamp_listData test1, test2, test3, test4, test5, test6;
+    static costamp_listData test1, test2, test3, test4, test5, test6;
     Button btn_CourseView;
 
     @Override
@@ -62,6 +63,7 @@ public class Course2Activity extends AppCompatActivity {
         costamp_list.add(test4);
         costamp_list.add(test5);
         costamp_list.add(test6);
+
 
         costampAdapter = new costamp_listAdapter(this, R.layout.costamp_listview,costamp_list);
         listView.setAdapter(costampAdapter);
