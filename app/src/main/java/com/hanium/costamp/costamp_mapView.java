@@ -2,7 +2,10 @@ package com.hanium.costamp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,12 +40,12 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
     public void onMapReady(final GoogleMap map) {
         googleMap = map;
 
-        Marker mk1 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test1.latLng).title("바다바다").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker1)));
-        Marker mk2 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test2.latLng).title("협재 해수욕장").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2)));
-        Marker mk3 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test3.latLng).title("관음사").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker3)));
-        Marker mk4 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test4.latLng).title("한라산").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker4)));
-        Marker mk5 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test5.latLng).title("올레길").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker5)));
-        Marker mk6 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test6.latLng).title("우도").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker6)));
+        Marker mk1 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test1.latLng).title("바다바다").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker1)).getBitmap(), 117, 170 , false))));
+        Marker mk2 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test2.latLng).title("협재 해수욕장").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker2)).getBitmap(), 117, 170 , false))));
+        Marker mk3 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test3.latLng).title("관음사").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker3)).getBitmap(), 117, 170, false))));
+        Marker mk4 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test4.latLng).title("한라산").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker4)).getBitmap(), 117, 170 , false))));
+        Marker mk5 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test5.latLng).title("올레길").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker5)).getBitmap(), 117, 170 , false))));
+        Marker mk6 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test6.latLng).title("우도").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker6)).getBitmap(), 117, 170 , false))));
 
         // 맵셋팅
         polylineOptions = new PolylineOptions();
