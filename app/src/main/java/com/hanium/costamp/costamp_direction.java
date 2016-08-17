@@ -2,9 +2,8 @@ package com.hanium.costamp;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.akexorcist.googledirection.DirectionCallback;
@@ -17,9 +16,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -34,7 +31,7 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
     //String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilxxxxxxxxx";
     //String serverKey ="AIzaSyC5atU8_OZIE9Bkf5q0g6VKCXOhrOQ1HPw";
     String serverKey = "AIzaSyBkrnK1sUgkaAIurp5xuebZ-HuKsJff3nc";
-    int i =0;
+    int i = 0;
     LatLng origin;
     LatLng destination;
 
@@ -66,7 +63,6 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
     }
 
 
-
     //길찾기요청
     public void requestDirection() {
         Snackbar.make(getWindow().getDecorView().getRootView(), "Direction Requesting...", Snackbar.LENGTH_SHORT).show();
@@ -74,7 +70,7 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
                 .from(origin)
                 .to(destination)
                 .transportMode(TransportMode.TRANSIT)
-                .execute(new DirectionCallback(){
+                .execute(new DirectionCallback() {
                     @Override
                     public void onDirectionSuccess(Direction direction, String rawBody) {
                         Snackbar.make(getWindow().getDecorView().getRootView(), "Success with status : " + direction.getStatus(), Snackbar.LENGTH_LONG).show();
