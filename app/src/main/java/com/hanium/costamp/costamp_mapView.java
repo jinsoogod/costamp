@@ -47,7 +47,7 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
         Marker mk5 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test5.latLng).title("올레길").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker5)).getBitmap(), 117, 170 , false))));
         Marker mk6 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test6.latLng).title("우도").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker6)).getBitmap(), 117, 170 , false))));
 
-        
+
         // 맵셋팅
         polylineOptions = new PolylineOptions();
         polylineOptions.color(Color.rgb(16,15,56));
