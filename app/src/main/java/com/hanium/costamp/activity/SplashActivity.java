@@ -1,6 +1,5 @@
 package com.hanium.costamp.activity;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -9,13 +8,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Window;
-import android.widget.Toast;
 
 // 앱을 실행시켰을 때의 처음 인트로 화면
 // 최종 수정자 : 유재혁, 최종 수정 날짜 : 20160711 15:00
@@ -26,13 +22,18 @@ public class SplashActivity extends Activity
     boolean isInternetMobile = false; // 3G망 상태 값 저장
 
     private final int MY_PERMISSION_REQUEST_ACCESS_LOCATION = 100;
-
+//    ImageView mIv_loading;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // 상단바 삭제
         setContentView(com.hanium.costamp.R.layout.activity_splash);
+//mIv_loading=(ImageView)findViewById(R.id.iv_loading)
+//        int resourceId = R.drawable.map;
+//        Glide.with(this)
+//                .load(resourceId)
+//                .into(mIv_loading);
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE); // 연결 상태를 확인하기 위한 ConnectivityManager 객체 선언
 
@@ -122,7 +123,6 @@ public class SplashActivity extends Activity
             AlertDialog MsgDialog = MsgBuilder.create(); // 알림창 객체 생성
             MsgDialog.show(); // 알림창 띄우기
         }
-
 
 
 
