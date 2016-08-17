@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">코스탬프(COSTAMP)</string>
+    <string name="app_name">Costamp</string>
     <string name="title_activity_main1">코스탬프</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

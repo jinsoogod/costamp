@@ -15,8 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -27,9 +25,6 @@ public class Fragment4 extends Fragment {
     Spinner mSpinner3;
     GridView mGridview;
     View view;
-
-
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
