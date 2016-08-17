@@ -19,7 +19,7 @@
 <!--?android:background="@drawable/map"-->
 
     <Button
-        android:id="@+id/btn_tmp"
+        android:id="@+id/btn_jeju"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

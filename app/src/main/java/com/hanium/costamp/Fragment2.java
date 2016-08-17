@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 
 //메인화면에서 COURSE탭 Fragment
 public class Fragment2 extends Fragment {
-    Button mBtn_tmp;
+    Button mBtn_jeju;
     ImageView mIv_map;
 
     @Override
@@ -31,7 +31,7 @@ public class Fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment2, null);
-        mBtn_tmp = (Button) view.findViewById(R.id.btn_tmp);
+        mBtn_jeju = (Button) view.findViewById(R.id.btn_jeju);
         mIv_map = (ImageView)view.findViewById(R.id.iv_map) ;
 
         int resourceId = R.drawable.map;
@@ -41,7 +41,7 @@ public class Fragment2 extends Fragment {
                 .into(mIv_map);
 
 
-        mBtn_tmp.setOnClickListener(new View.OnClickListener() {
+        mBtn_jeju.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CourseActivity.class);
