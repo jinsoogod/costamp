@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+//최종 작업일자 160820 00:30
+//최종 작업자 : 으녕으녕
 /**
  * Created by korea on 2016-08-14.
  */

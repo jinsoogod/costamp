@@ -24,8 +24,8 @@ import static com.hanium.costamp.picture_transmission_dialog.*;
 /**
  * Created by YEP on 2016-08-04.
  */
-//최종 작업일자 160809 10:11
-    //최종 작업자 : 으녕
+//최종 작업일자 160820 00:30
+//최종 작업자 : 으녕으녕
 
 public class ImageAdapter extends BaseAdapter {
     static String[] mThumblds = new String[100];

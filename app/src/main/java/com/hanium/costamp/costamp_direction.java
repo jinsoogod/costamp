@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+//최종 작업일자 160820 00:30
+//최종 작업자 : 으녕으녕
 public class costamp_direction extends Activity implements OnMapReadyCallback {
 
 

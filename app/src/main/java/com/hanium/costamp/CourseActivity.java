@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+//최종 작업일자 160820 00:30
+//최종 작업자 : 으녕으녕
 public class CourseActivity extends AppCompatActivity {
     Button mBtn_makingCourse;
     Button btn_MapView;

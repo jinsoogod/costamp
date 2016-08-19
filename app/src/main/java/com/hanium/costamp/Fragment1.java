@@ -27,6 +27,8 @@ import com.bumptech.glide.request.target.ViewTarget;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+//최종 작업일자 160820 00:30
+//최종 작업자 : 으녕으녕
 
 //메인화면에서 COSTAMP탭 Fragment
 public class Fragment1 extends Fragment {
