@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
@@ -27,16 +28,17 @@ import static com.hanium.costamp.picture_transmission_dialog.*;
     //최종 작업자 : 으녕
 
 public class ImageAdapter extends BaseAdapter {
-    static String[] mThumblds = new String[100];
+    static String[] mThumblds = new String[10];
 
 
     Thread setImage = new Thread(new Runnable(){
         @Override
         public void run() {
             int i=0;
-            String[] items=new String[100];
-            while(i<100){
+            String[] items=new String[10];
+            while(i<8){
                 items[i] ="http://1.255.57.236/picture/upload"+Integer.toString(i)+".png";
+                mThumblds[i] = items[i];
                 i++;
             }
         }
@@ -87,11 +89,16 @@ public class ImageAdapter extends BaseAdapter {
 
 
         String url = (String) getItem(position);
-        Picasso.with(context)
+/*        Picasso.with(context)
                 .load(url)
                 .placeholder(R.drawable.loader)
                 .fit()
                 .centerCrop().into(imageView);
+*/
+        Glide.with(context)
+                .load(url)
+                .placeholder(R.drawable.loader)
+                .into(imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
 

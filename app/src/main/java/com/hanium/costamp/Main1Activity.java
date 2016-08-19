@@ -6,6 +6,7 @@ package com.hanium.costamp;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +19,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.ViewTarget;
 
 public class Main1Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +38,11 @@ public class Main1Activity extends AppCompatActivity
     Fragment3 f3 = new Fragment3();
     Fragment4 f4 = new Fragment4();
 
+    Button btn_a;
+    Button btn_b;
+    Button btn_c;
+    Button btn_d;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +53,50 @@ public class Main1Activity extends AppCompatActivity
         Intent intent = new Intent(this, RegistrationIntentService.class);
         startService(intent);
 
-        Button btn_a = (Button) findViewById(R.id.btnCostamp);
-        Button btn_b = (Button) findViewById(R.id.btnCourse);
-        Button btn_c = (Button) findViewById(R.id.btnRanking);
-        Button btn_d = (Button) findViewById(R.id.btnPhoto);
+        btn_a = (Button) findViewById(R.id.btnCostamp);
+        btn_b = (Button) findViewById(R.id.btnCourse);
+        btn_c = (Button) findViewById(R.id.btnRanking);
+        btn_d = (Button) findViewById(R.id.btnPhoto);
+
+        //버튼 배경 설정
+        Glide.with(getApplicationContext())
+                .load(R.drawable.main_04_icon_costamp)
+                .into(new ViewTarget<Button,GlideDrawable>(btn_a) {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        Button btn_a = this.view;
+                        btn_a.setBackgroundResource(R.drawable.main_04_icon_costamp);
+                    }
+                });
+
+
+        Glide.with(getApplicationContext())
+                .load(R.drawable.main_04_icon_course)
+                .into(new ViewTarget<Button,GlideDrawable>(btn_b) {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        Button btn_a = this.view;
+                        btn_a.setBackgroundResource(R.drawable.main_04_icon_course);
+                    }
+                });
+        Glide.with(getApplicationContext())
+                .load(R.drawable.main_04_icon_rank)
+                .into(new ViewTarget<Button,GlideDrawable>(btn_c) {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        Button btn_a = this.view;
+                        btn_a.setBackgroundResource(R.drawable.main_04_icon_rank);
+                    }
+                });
+        Glide.with(getApplicationContext())
+                .load(R.drawable.main_04_icon_picture)
+                .into(new ViewTarget<Button,GlideDrawable>(btn_d) {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        Button btn_a = this.view;
+                        btn_a.setBackgroundResource(R.drawable.main_04_icon_picture);
+                    }
+                });
 
         //프래그먼트를 제어하기 위해서는 FragmentManager를 사용해야한다.
         manager = getFragmentManager();

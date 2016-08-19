@@ -19,6 +19,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.ViewTarget;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -52,6 +57,7 @@ public class Fragment1 extends Fragment {
         mSpinner11 = (Spinner) view.findViewById(R.id.spinner11);
         mSpinner12 = (Spinner) view.findViewById(R.id.spinner12);
         pager = (ViewPager) view.findViewById(R.id.adpager);
+
 
         initSpinner11();
         initSpinner12();
