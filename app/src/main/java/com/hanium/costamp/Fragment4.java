@@ -15,6 +15,11 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
 
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 
 
@@ -25,6 +30,7 @@ public class Fragment4 extends Fragment {
     Spinner mSpinner3;
     GridView mGridview;
     View view;
+    static int fileLength;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,12 +40,9 @@ public class Fragment4 extends Fragment {
         mSpinner3 = (Spinner) view.findViewById(R.id.spinner3);
         initSpinner2();
         initSpinner3();
+        ReadLengthThread readLength = new ReadLengthThread();
+        readLength.start();
 
-
-        for(int i=0 ; i<10; i++){
-            ImageAdapter.mThumblds[i] = "http://1.255.57.236/picture/upload"+i+".png";
-
-        }
         // 그리드 어댑터 세팅: 이미지 처리를 위한 이미지 어댑터를 그리드뷰에 전달
         mGridview = (GridView) view.findViewById(R.id.gv_signageImage);
         ImageAdapter imageAdapter = new ImageAdapter(this.getActivity());
@@ -90,5 +93,33 @@ public class Fragment4 extends Fragment {
     }
 
 
+    class ReadLengthThread extends Thread{
+        @Override
+        public void run() {
 
+            //소켓 아이피 & 포트
+            Socket socket = null;
+            try {
+                socket = new Socket("1.255.57.236",8878);
+                //사이니지에 reject 반환
+                ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
+                outstream.writeUTF("request");
+                outstream.flush();
+                ObjectInputStream instream = new ObjectInputStream(socket.getInputStream());
+                //파일 이름 불러오기
+                fileLength = instream.readInt();
+                outstream.close();
+                instream.close();
+                socket.close();
+                ImageAdapter.mThumblds = new String[fileLength];
+                for(int i=0 ; i<fileLength; i++){
+                    ImageAdapter.mThumblds[i] = "http://1.255.57.236/picture/upload"+i+".png";
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
 }

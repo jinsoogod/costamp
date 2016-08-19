@@ -78,6 +78,7 @@ public class ImageAdapter extends BaseAdapter {
 */
         Glide.with(context)
                 .load(url)
+                .placeholder(R.drawable.loader)
                 .into(imageView);
 
         if(imageView == null){
