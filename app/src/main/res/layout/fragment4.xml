@@ -33,7 +33,7 @@
 
     <GridView
         android:layout_marginTop="20dp"
-        android:id="@+id/gridView"
+        android:id="@+id/gv_signageImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnWidth="90dp"
@@ -44,7 +44,7 @@
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_below="@+id/linearLayout"
-        android:numColumns="3" />
+        android:numColumns="2" />
 
 
 </RelativeLayout>

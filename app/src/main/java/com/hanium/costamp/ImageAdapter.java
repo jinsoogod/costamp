@@ -28,26 +28,7 @@ import static com.hanium.costamp.picture_transmission_dialog.*;
     //최종 작업자 : 으녕
 
 public class ImageAdapter extends BaseAdapter {
-    static String[] mThumblds = new String[10];
-
-
-    Thread setImage = new Thread(new Runnable(){
-        @Override
-        public void run() {
-            int i=0;
-            String[] items=new String[10];
-            while(i<8){
-                items[i] ="http://1.255.57.236/picture/upload"+Integer.toString(i)+".png";
-                mThumblds[i] = items[i];
-                i++;
-            }
-        }
-    });
-
-    public void setSetImage() {
-        setImage.start();
-    }
-
+    static String[] mThumblds = new String[100];
     Context context;
 //RelativeLayout rel;
 
@@ -80,7 +61,7 @@ public class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
 
             imageView = new ImageView(context);
-            imageView.setLayoutParams(new GridView.LayoutParams(250, 250));
+            imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setPadding(2, 2, 2, 2);
         } else {
@@ -97,8 +78,11 @@ public class ImageAdapter extends BaseAdapter {
 */
         Glide.with(context)
                 .load(url)
-                .placeholder(R.drawable.loader)
                 .into(imageView);
+
+        if(imageView == null){
+
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
 

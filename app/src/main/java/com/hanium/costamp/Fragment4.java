@@ -36,8 +36,12 @@ public class Fragment4 extends Fragment {
         initSpinner3();
 
 
+        for(int i=0 ; i<10; i++){
+            ImageAdapter.mThumblds[i] = "http://1.255.57.236/picture/upload"+i+".png";
+
+        }
         // 그리드 어댑터 세팅: 이미지 처리를 위한 이미지 어댑터를 그리드뷰에 전달
-        mGridview = (GridView) view.findViewById(R.id.gridView);
+        mGridview = (GridView) view.findViewById(R.id.gv_signageImage);
         ImageAdapter imageAdapter = new ImageAdapter(this.getActivity());
         mGridview.setAdapter(imageAdapter);
 
