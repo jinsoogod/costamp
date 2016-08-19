@@ -50,6 +50,7 @@ public class costamp_listAdapter extends BaseAdapter{
     public View getView(final int position, View convertView, ViewGroup parent) {
 
 
+        //리스트뷰 어댑터 최신화!
         notifyDataSetChanged();
 //                final int pos = position;
 
@@ -65,6 +66,7 @@ public class costamp_listAdapter extends BaseAdapter{
             TextView course_info3 = (TextView) convertView.findViewById(R.id.tv_courseinfo3);
 
 
+            //이미지로드
             Glide.with(mContext)
                     .load(data.get(position).image)
                     .into(course_image);

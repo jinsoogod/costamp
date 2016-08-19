@@ -106,13 +106,15 @@ public class Fragment4 extends Fragment {
                 outstream.writeUTF("request");
                 outstream.flush();
                 ObjectInputStream instream = new ObjectInputStream(socket.getInputStream());
-                //파일 이름 불러오기
+                //파일 갯수 불러오기
                 fileLength = instream.readInt();
                 outstream.close();
                 instream.close();
                 socket.close();
+                //mThumbIds를 fileLength에따라 동적할당
                 ImageAdapter.mThumblds = new String[fileLength];
                 for(int i=0 ; i<fileLength; i++){
+                    //이미지 url 다넣어줌
                     ImageAdapter.mThumblds[i] = "http://1.255.57.236/picture/upload"+i+".png";
                 }
             } catch (IOException e) {

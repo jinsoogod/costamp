@@ -42,13 +42,20 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
     @Override
     public void onMapReady(final GoogleMap map) {
 
+        //구글맵 객체 선언
         googleMap = map;
+        //어디를 띄어줄 것인가?
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Course2Activity.test1.latLng, 15));
+
+        //줌 해주는거
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
+        //시작점
         origin = Course2Activity.test1.latLng;
+        //도착점
         destination = Course2Activity.test2.latLng;
 
+        //길찾기 요청
         requestDirection();
     }
 
@@ -59,6 +66,7 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
         setContentView(R.layout.activity_costamp_direction);
 
 
+        //MapFragment에 OnMapReadySync를 맞춰줌
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.direction_map);
         mapFragment.getMapAsync(this);
 
@@ -68,20 +76,24 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
     //길찾기요청
     public void requestDirection() {
         Snackbar.make(getWindow().getDecorView().getRootView(), "Direction Requesting...", Snackbar.LENGTH_SHORT).show();
+
+        //디렉 션 라이브러리 를 그대로사용
         GoogleDirection.withServerKey(serverKey)
                 .from(origin)
                 .to(destination)
-                .transportMode(TransportMode.TRANSIT)
+                .transportMode(TransportMode.TRANSIT)       //대중교통모드
                 .execute(new DirectionCallback() {
+                    //길찾기 성공했을때
                     @Override
                     public void onDirectionSuccess(Direction direction, String rawBody) {
                         Snackbar.make(getWindow().getDecorView().getRootView(), "Success with status : " + direction.getStatus(), Snackbar.LENGTH_LONG).show();
                         if (direction.isOK()) {
                             ArrayList<LatLng> sectionPositionList = direction.getRouteList().get(0).getLegList().get(0).getSectionPoint();
                             for (LatLng position : sectionPositionList) {
+                                //마커찍어줌
                                 googleMap.addMarker(new MarkerOptions().position(position));
                             }
-
+                            //경로 그려줌 대중교통은 빨간색 도보는 파란색
                             List<Step> stepList = direction.getRouteList().get(0).getLegList().get(0).getStepList();
                             ArrayList<PolylineOptions> polylineOptionList = DirectionConverter.createTransitPolyline(getApplicationContext(), stepList, 5, Color.RED, 3, Color.BLUE);
                             for (PolylineOptions polylineOption : polylineOptionList) {
@@ -92,6 +104,7 @@ public class costamp_direction extends Activity implements OnMapReadyCallback {
                         }
                     }
 
+                    //길찾기 실패했을때
                     @Override
                     public void onDirectionFailure(Throwable t) {
                         Snackbar.make(getWindow().getDecorView().getRootView(), t.getMessage(), Snackbar.LENGTH_SHORT).show();

@@ -40,6 +40,8 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(final GoogleMap map) {
+
+        //경로 마커를 찍어준다
         googleMap = map;
 
         Marker mk1 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test1.latLng).title("바다바다").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker1)).getBitmap(), 117, 170 , false))));
@@ -50,7 +52,7 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
         Marker mk6 = googleMap.addMarker(new MarkerOptions().position(Course2Activity.test6.latLng).title("우도").icon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.marker6)).getBitmap(), 117, 170 , false))));
 
 
-        // 맵셋팅
+        //경로 라인을 그려줌 add 된순서대로 나온다.
         polylineOptions = new PolylineOptions();
         polylineOptions.color(Color.rgb(16,15,56));
         polylineOptions.width(15);
@@ -63,6 +65,7 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
         polylineOptions.addAll(arrayPoints);
         map.addPolyline(polylineOptions);
 
+        // 맵셋팅
        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom( Course2Activity.test1.latLng, 15));
 
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
@@ -80,11 +83,13 @@ public class costamp_mapView extends Activity implements OnMapReadyCallback {
 
         arrayPoints = new ArrayList<LatLng>();
 
+        //onMapReady와 MapFragment Sync
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.course_map);
         mapFragment.getMapAsync(this);
 
 
+        //길찾기 요청해줌
         btn_courseDirectionRequest = (Button)findViewById(R.id.btn_costamp_RequestDirection);
         btn_courseDirectionRequest.setOnClickListener(new View.OnClickListener() {
             @Override

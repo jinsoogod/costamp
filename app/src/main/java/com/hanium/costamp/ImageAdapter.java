@@ -28,6 +28,7 @@ import static com.hanium.costamp.picture_transmission_dialog.*;
 //최종 작업자 : 으녕으녕
 
 public class ImageAdapter extends BaseAdapter {
+    //그냥 임의로 할당해줬음. 이미지 로드 요청시 동적할당됨.
     static String[] mThumblds = new String[100];
     Context context;
 //RelativeLayout rel;
@@ -70,12 +71,7 @@ public class ImageAdapter extends BaseAdapter {
 
 
         String url = (String) getItem(position);
-/*        Picasso.with(context)
-                .load(url)
-                .placeholder(R.drawable.loader)
-                .fit()
-                .centerCrop().into(imageView);
-*/
+        //이미지로드
         Glide.with(context)
                 .load(url)
                 .placeholder(R.drawable.loader)
@@ -85,13 +81,18 @@ public class ImageAdapter extends BaseAdapter {
 
         }
 
+        //이미지뷰 클릭시 사진띄움
         imageView.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 View dialogView = (View) View.inflate(context, R.layout.fragment4_dialog, null);
                 AlertDialog.Builder dlg = new AlertDialog.Builder(context);
                 ImageView image10 = (ImageView) dialogView.findViewById(R.id.image10);
-                //image10.setImageResource(mThumblds[position]);
+                String url = (String) getItem(position);
+                Glide.with(context)
+                        .load(url)
+                        .placeholder(R.drawable.loader)
+                        .into(image10);
                 dlg.setView(dialogView);
                 dlg.setNegativeButton("닫기", null);
                 dlg.show();

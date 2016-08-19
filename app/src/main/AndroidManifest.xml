@@ -169,9 +169,6 @@
             android:name=".CourseInfoActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name=".MapView"
-            android:launchMode="singleTop" />
-        <activity
             android:name=".costamp_mapView"
             android:launchMode="singleTop" />
         <activity
