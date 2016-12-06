@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Costamp</string>
+    <string name="title_activity_main1">코스탬프</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">535399623327703</string>
+    <string name="kakao_app_key">db1196403a6c37239c35496d3bb5c937</string>
+</resources>
